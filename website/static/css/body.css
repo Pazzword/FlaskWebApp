@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('fonts/Comfortaa.ttf') format('truetype');
+    font-weight: bold;
+    font-style: bold;
+}
+
+body {
+    background-size: auto;
+    background-position: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.header-top {
+    padding: 24px 0 24px;
+}
+
+.above-navbar {
+    background-color:#4f262f;
+    text-align: center;
+    color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.above-navbar img {
+    width: 100%; /* Changed to 100% to ensure responsiveness */
+    height: auto;
+    display: block;
+    margin: 5px auto 0; /* Adjusted margin to bring it down a bit */
+}
+
+.navbar {
+    display: flex;
+    background-color: #fff; /* Creamy white color */
+    padding: 15px 0;
+    border-bottom: 1px solid #d2d2d2;
+    margin: 0;
+    width: 100%;
+}
+
+.navbar-nav {
+    font-family: 'Comfortaa', sans-serif;
+    display: flex;
+    justify-content: center; /* Center the navbar options horizontally */
+    align-items: center; /* Center vertically within navbar */
+    height: 100%; /* Ensure the navbar height is full */
+}
+
+.navbar-nav a {
+    font-family: 'Comfortaa', sans-serif;
+    /* Add any other styling you need for the navigation links */
+}
+
+
+.nav-item {
+    font-size: 22px; 
+    margin: 0 40px; /* Add more horizontal spacing between options */
+}
+
+.nav-link {
+    color: #000000;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border-color: #000000;
+}
+
+.navbar-toggler-icon {
+    background-color: #000000;
+}
+
+.footer-section {
+    background-color:#4f262f;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid #000000;
+    margin-top: auto;
+}
+
+.footer-section a {
+    color: #ffffff;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social img {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    color: #ffffff;
+}
+
+.botBorder {
+    border-bottom: 1px solid #000000;
+}
+
+/*{
+    border: 1px solid red; }/* Add a red border to all elements for visualization
+}   To check errors 

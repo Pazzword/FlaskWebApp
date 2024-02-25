@@ -1,0 +1,209 @@
+{% extends "body.html" %}
+
+{% block title %}Bio{% endblock %}
+
+{% block content %}
+<head>
+    <!-- Other head elements -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bio.css') }}">
+</head>
+
+
+
+
+
+
+
+    <div class="row row-content">
+        <div class="col-lg-6">
+            <h1>ABU PASHAEV </h1>
+            <img src="{{ url_for('static', filename='Images/avatar.jpg') }}" alt="Abu Pashaev" class="img-fluid rounded">
+            Abu Pashaev 2024
+        </div>
+        <div class="col-lg-6" style="background-color: #4f262f; color: rgb(Your_Text_R, Your_Text_G, Your_Text_B);">
+            {{ bio }}
+
+            <!-- Image Slider -->
+            <div class="slider-container">
+                <div class="slides">
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper1.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper1.jpg') }}" alt="Blue">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper2.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper2.jpg') }}" alt="Yellow">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper3.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper3.jpg') }}" alt="Bridge">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper4.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper4.jpg') }}" alt="Back">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper5.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper5.jpg') }}" alt="Sun">
+                    </div>
+                    
+                </div>
+
+                <!-- Dots to count images -->
+                <div class="dots-container">
+                    {% for _ in range(1, 6) %}
+                        <div class="dot" onclick="currentSlide({{ loop.index }})"></div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="white-container">
+        <h1>Where Art Meets Emotion, and Every Stroke Tells a Story.</h1>
+        {{ text }} 
+
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+
+
+    <div class="row row-content">
+        
+        <div class="col-lg-6 order-lg-1">
+            <img src="{{ url_for('static', filename='Images/freeman.png') }}" alt="Freeman" class="img rounded" style="width: 100%;">
+        </div>  
+    </div>
+
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 0px 0;">
+
+    <div class="row row-content adjustable-margin" style="color: rgb(237, 236, 236);">
+        <div class="col-lg-6">
+            <h1>BOTTOM TEXT</h1>
+            {{ mod }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
+                </div>
+                <div class="col-lg-6">
+                    <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+
+    
+    <div class="row row-content">
+        <div class="col-lg-6 mx-auto text-center">
+            <h1>Art Exhibitions</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="bg-dark text-white" style="width: 100%; padding: 40px;">
+    <table style="border-collapse: collapse; width: 80%; margin: 0 auto;">
+    
+    <tr>
+        <td>1992</td>
+        <td>Atomic Heart of My Mom</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>1993</td>
+        <td>Premonition of the Civil War</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>1996</td>
+        <td>Silent Protest Against Violence</td>
+        <td>Chechen-Aul, Russia</td>
+    </tr>
+    <tr>
+        <td>1997</td>
+        <td>Wounded Flowers</td>
+        <td>Chechen-Aul, Russia</td>
+    </tr>
+    <tr>
+        <td>1993</td>
+        <td>The Face of War</td>
+        <td>Nazran, Russia</td>
+    </tr>
+    <tr>
+        <td>2003</td>
+        <td>The Face of War</td>
+        <td>Prague, Czech Republic</td>
+    </tr>
+    <tr>
+        <td>2004</td>
+        <td>Optimistic Reflection of the Past</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>2007</td>
+        <td>Peace to the Caucasus</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>2008</td>
+        <td>Sochi - 2008</td>
+        <td>Sochi, Russia</td>
+    </tr>
+    <tr>
+        <td>2009</td>
+        <td>Chechen Artists at the State Duma</td>
+        <td>Moscow, Russia</td>
+    </tr>
+    <tr>
+        <td>2011</td>
+        <td>Artists from the Chechen Republic</td>
+        <td>Saratov City Duma, Russia</td>
+    </tr>
+    <tr>
+        <td>2011</td>
+        <td>Apotheosis of History (with V.V. Zauraev)</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>2011</td>
+        <td>Scream in Art</td>
+        <td>Maykop, Russia</td>
+    </tr>
+    <tr>
+        <td>2012</td>
+        <td>Zonal Exhibition</td>
+        <td>Rostov-on-Don, Russia</td>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>VIII International Art Symposium "Tales of Love"</td>
+        <td>Yelabuga, Russia</td>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>Hand in Art</td>
+        <td>Maykop, Russia</td>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>XI Regional Exhibition "Southern Russia"</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    </table>
+</div>
+
+
+
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+
+
+
+<!-- Enlarged Image Modal -->
+<div class="enlarged-modal" onclick="closeEnlarged()">
+    <span class="close-button" onclick="closeEnlarged()">&times;</span>
+    <img id="enlargedImg" alt="">
+</div>
+
+
+<script src="static/js/script.js"></script>
+{% endblock %}

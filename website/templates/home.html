@@ -1,0 +1,32 @@
+{% extends "body.html" %}
+{% block title %}HOME{% endblock %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+
+<!-- Section after navbar -->
+
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+
+
+
+
+
+<div class="row row-content adjustable-margin" style="color: rgb(237, 236, 236);">
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
+            </div>
+            <div class="col-lg-6">
+                <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+{% endblock %}
