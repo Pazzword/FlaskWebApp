@@ -1,0 +1,133 @@
+body {
+    background: url("/static/Images/brown.jpg") center / cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff; /* Set text color to contrast with the background */
+}
+
+/* Additional styles for Bio.html */
+.white-container {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Styles for the image slider */
+.slider-container {
+    padding: 12px; 
+    position: relative;
+    max-width: 100%; /* Set the maximum width of the slider */
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 50%; /* Each slide takes up 50% of the container */
+    cursor: pointer;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Add rounded corners for a stylish look */
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.enlarged-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.enlarged-modal img {
+    width: 80%; /* Set your enlarged image width */
+    height: auto;
+    border-radius: 10px; /* Add rounded corners for a stylish look */
+}
+
+.enlarged-modal.active {
+    display: flex;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    z-index: 1;
+}
+
+.bg-dark {
+    background-color: #4f262f; /* Dark background color */
+}
+
+.table-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+
+}
+
+th, td {
+    font-weight: bold;
+    
+    padding: 12px; /* Increase padding for better spacing */
+    text-align: center;
+}
+
+
+
+tr:nth-child(even) {
+    background-color: #4f262f; /* Alternate row background color */
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Decrease font size on smaller screens */
+    }
+}
+
+
+/*{border: 1px solid red;} 
+    /* Add a red border to all elements for visualization
+     To check errors */

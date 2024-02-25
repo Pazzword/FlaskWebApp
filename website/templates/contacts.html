@@ -1,0 +1,37 @@
+{% extends "body.html" %}
+
+
+{% block title %}
+  Contacts
+{% endblock %}
+
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}">
+</head>
+
+
+
+
+<div class="contact-container">
+  <h1>Contact details</h1>
+  
+  <section class="contact-section">
+    <h2>Email</h2>
+    <p>YourEmail@example.com</p>
+  </section>
+
+  <section class="contact-section">
+    <h2>Phone</h2>
+
+    <p>+1 (555) 123-4567</p>
+  </section>
+
+  <section class="contact-section">
+    <h2>Social Media</h2>
+    <img src="/static/Images/instagram_square.png" alt="WhatsApp Messenger" width="50" height="50">
+    <img src="/static/Images/wazup.png" alt="WhatsApp Messenger" width="50" height="50">
+  </section>
+</div>
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+{% endblock %}

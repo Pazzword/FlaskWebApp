@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Top section -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/body.css') }}" />
+
+    <!-- Add this in the head section of your HTML file -->
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;300&display=swap" rel="stylesheet">
+
+    
+</head>
+
+<body>
+    <!-- Header section -->
+    <div class="row" style="background-color: #4f262f; margin: 0;">
+        <div class="above-navbar" style="font-family: 'Calibri', 'Calibri Light', sans-serif; display: flex; justify-content: space-between; align-items: center; font-size: 14px; width: 100%;">
+            <div style="flex-grow: 1; text-align: center;">
+                <img src="{{ url_for('static', filename='Images/abu_pashaevENG.png') }}" alt="Абу Пашев" style="width: 100%;">
+                "Beyond Traditions: The World of Abstract Art"
+            </div>
+            <div style="margin-left: auto;">
+                <img src="{{ url_for('static', filename='Images/sign2.png') }}" alt="Sign" style="max-width: 40%; margin: 20px 0 10px;">
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+ <!-- Main navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="navbar-nav mx-auto">
+            <a class="nav-item nav-link" id="home" href="/">MAIN</a>
+            <a class="nav-item nav-link" id="bio" href="/bio">BIOGRAPHY</a>
+            <a class="nav-item nav-link" id="gallery" href="/gallery">GALLERY</a>
+            <a class="nav-item nav-link" id="contacts" href="/contacts">CONTACTS</a>
+        </div>
+
+        <!-- Language Switch Button -->
+        <div class="navbar-nav">
+            <div class="language-switch ml-auto">
+                {% if session['lang'] == 'en' %}
+                <a href="{{ url_for('views.set_language', lang='ru') }}">RU</a>
+                {% else %}
+                <a href="{{ url_for('views.set_language', lang='en') }}">EN</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer section -->
+    <footer class="footer-section botBorder">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-12 col-md text-center footerText social">
+                    All works © Abu Pashaev
+                </div>
+
+                <div class="col-12 col-md text-center footerText social">
+                    E
+                    <a href="mailto:info@AbuPashaev.com" target="_blank"><img
+                        src="static/Images/mail.png" alt="EmailSign"></a>ail
+                </div>
+                
+                <div class="col-12 col-md text-center footerText social">
+                    <a href="https://www.instagram.com/pashaev.abu/" target="_blank"><img
+                            src="static/Images/instagram.png" alt="Instagram"></a>
+                </div>
+
+                <div class="col-12 col-md text-center footerText social">
+                    <a href="https://www.instagram.com/pashaev.abu/" target="_blank">DONATE<img
+                            src="static/Images/donate.png" alt="Donate"></a>
+                </div> 
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!-- Include any other scripts as needed -->
+
+</body>
+
+</html>
