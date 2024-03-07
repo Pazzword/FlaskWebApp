@@ -1,100 +1,200 @@
 {% extends "body.html" %}
 {% block title %}Gallery{% endblock %}
 {% block content %}
-<style>
-    body {
-        background-image: url("{{ url_for('static', filename='Images/brown.jpg') }}");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        color: #fff; /* Set text color to contrast with the background */
-    }
-
-    .thumbnail-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .thumbnail-link {
-        margin: 10px;
-        position: relative;
-        cursor: pointer;
-    }
-
-    .thumbnail-link img {
-        width: 200px; /* Set your thumbnail width */
-        height: auto;
-        border: 2px solid #fff; /* Set border color */
-        border-radius: 5px; /* Optional: Add border radius */
-    }
-
-    .enlarged-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-        justify-content: center;
-        align-items: center;
-    }
-
-    .enlarged-modal img {
-        width: 50%; /* Set your enlarged image width */
-        height: auto;
-        border: 2px solid #fff; /* Set border color */
-        border-radius: 5px; /* Optional: Add border radius */
-    }
-
-    .enlarged-modal.active {
-        display: flex;
-    }
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
     
-    .close-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 20px;
-        z-index: 1;
-    }
-</style>
+</head>
 
-
-
-<h1>Галерея художника</h1>
-<div class="thumbnail-container">
-    {% for image in gallery_images %}
-        <div class="thumbnail-link" onclick="enlargeImage('{{ url_for('static', filename='larger_images/' + image) }}')">
-            <img src="{{ url_for('static', filename='thumbnails/' + image) }}" alt="{{ image }}">
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="slide">
+            <img src="static/Images/sign.png" alt="Image 3">
         </div>
-    {% endfor %}
+        <!-- Add more slides as needed -->
+    </div>
 </div>
 
 
-<!-- Enlarged Image Modal -->
-<div class="enlarged-modal" onclick="closeEnlarged()">
-    <span class="close-button" onclick="closeEnlarged()">&times;</span>
-    <img id="enlargedImg" alt="">
+<div class="grid-container">
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG1.jpg') }}" alt="Image 1" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG1.jpg') }}', 'Image 1')">
+        </div>
+    </div>
+    
+    <!-- Repeat the above div for each image, changing the image source and alt text -->
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG2.jpg') }}" alt="Image 2" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG2.jpg') }}', 'Image 2')">
+        </div>
+    </div>
+
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG3.jpg') }}" alt="Image 3" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG3.jpg') }}', 'Image 3')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG4.jpg') }}" alt="Image 4" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG4.jpg') }}', 'Image 4')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG5.jpg') }}" alt="Image 5" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG5.jpg') }}', 'Image 5')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG6.jpg') }}" alt="Image 6" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG6.jpg') }}', 'Image 6')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG7.jpg') }}" alt="Image 7" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG7.jpg') }}', 'Image 7')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG8.jpg') }}" alt="Image 8" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG8.jpg') }}', 'Image 8')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG9.jpg') }}" alt="Image 9" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG9.jpg') }}', 'Image 9')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}', 'Image 10')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 11" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}', 'Image 11')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG12.jpg') }}" alt="Image 12" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG12.jpg') }}', 'Image 12')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG13.jpg') }}" alt="Image 13" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG13.jpg') }}', 'Image 13')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG14.jpg') }}" alt="Image 14" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG14.jpg') }}', 'Image 14')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG15.jpg') }}" alt="Image 15" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG15.jpg') }}', 'Image 15')">
+        </div>
+    </div>
+
+
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG16.jpg') }}" alt="Image 16" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG16.jpg') }}', 'Image 16')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG17.jpg') }}" alt="Image 17" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG17.jpg') }}', 'Image 17')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG18.jpg') }}" alt="Image 18" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG18.jpg') }}', 'Image 18')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG19.jpg') }}" alt="Image 19" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG19.jpg') }}', 'Image 19')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG20.jpg') }}" alt="Image 20" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG20.jpg') }}', 'Image 20')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG21.jpg') }}" alt="Image 21" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG21.jpg') }}', 'Image 21')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG22.jpg') }}" alt="Image 22" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG22.jpg') }}', 'Image 22')">
+        </div>7
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG23.jpg') }}" alt="Image 23" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG23.jpg') }}', 'Image 23')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG24.jpg') }}" alt="Image 24" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG24.jpg') }}', 'Image 24')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG25.jpg') }}" alt="Image 25" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG25.jpg') }}', 'Image 25')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG26.jpg') }}" alt="Image 26" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG26.jpg') }}', 'Image 26')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG27.jpg') }}" alt="Image 27" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG27.jpg') }}', 'Image 27')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG28.jpg') }}" alt="Image 28" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG28.jpg') }}', 'Image 28')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG29.jpg') }}" alt="Image 29" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG29.jpg') }}', 'Image 29')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG30.jpg') }}" alt="Image 30" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG30.jpg') }}', 'Image 30')">
+        </div>
+    </div>
+
+
 </div>
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
 
 <script>
-    function enlargeImage(imageURL) {
-        document.getElementById('enlargedImg').src = imageURL;
-        document.querySelector('.enlarged-modal').classList.add('active');
-    }
+function openModal(url, alt) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("modalImg");
+    var captionText = document.getElementById("caption");
+    modal.style.display = "block";
+    modalImg.src = url;
+    modalImg.alt = alt;
+    // captionText.innerHTML = alt; // Optionally display image caption
+}
 
-    function closeEnlarged() {
-        document.querySelector('.enlarged-modal').classList.remove('active');
-    }
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
 </script>
 {% endblock %}
-
-
-
-
-

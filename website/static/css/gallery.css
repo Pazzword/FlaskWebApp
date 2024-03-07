@@ -1,0 +1,142 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a23 ;
+   /*background: url("/static/Images/brown.jpg") center / cover;*/
+    padding: 0;
+    margin: 0;
+}
+.carousel-container {
+    width: 70%; /* Adjust the width as needed */
+    margin: 0 auto;
+    perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+.carousel {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    position: relative;
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    animation: spin 15s infinite linear; /* Rotate the carousel */
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    transform-origin: center center; /* Set the rotation origin */
+    transition: transform 1s; /* Add smooth transition */
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+@keyframes spin {
+    from {
+        transform: rotateY(0deg); /* Start rotation */
+    }
+    to {
+        transform: rotateY(360deg); /* End rotation */
+    }
+}
+
+
+
+
+
+
+/* CSS for the grid layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.grid-item {
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+/* CSS for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.frame {
+    border: 4px solid #0a0a23; /* Frame border */
+    padding: 5px; /* Padding to separate image from frame */
+    background-color: #0a0a23; /* Frame background color */
+    display: inline-block; /* Make frame wrap around the image */
+    transition: transform 0.3s ease-in-out; /* Add smooth transition */
+}
+
+.frame:hover {
+    transform: scale(1.05); /* Scale up the frame on hover */
+}
+
+.gallery-button-container {
+    width: 20%; /* Adjust the width as needed */
+    text-align: center;
+}
+
+.gallery-button {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #0a0a23;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gallery-button:hover {
+    background-color: #1a1a3a; /* Darker shade of the background color on hover */
+}
+
+
+/*{
+    border: 1px solid red;
+}

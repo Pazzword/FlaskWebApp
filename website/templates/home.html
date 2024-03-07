@@ -1,32 +1,292 @@
 {% extends "body.html" %}
 {% block title %}HOME{% endblock %}
 {% block content %}
+<style scoped>
+    body {
+        background-color: #0a0a23;
+    }
 
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-</head>
+    main#carousel {
+        grid-row: 1 / 1;
+        grid-column: 1 / 8;
+        width: 100vw;
+        height: 450px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        perspective: 600px;
+        --items: 5;
+        --middle: 3;
+        --position: 3;
+        pointer-events: none;
+    }
 
-<!-- Section after navbar -->
+    div.item {
+        text-align: center;
+        padding: 20px;
+        border-radius: 20px;
+        position: absolute;
+        width: 300px;
+        height: 400px;
+        --r: calc(var(--position) - var(--offset));
+        --abs: max(calc(var(--r) * -1), var(--r));
+        transition: transform 0.5s ease-in-out;
+        transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-300px * var(--r)));
+        z-index: calc((var(--position) - var(--abs)));
+    }
 
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+    div.item img {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px; /* Adding smooth curved edges */
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+    }
+
+    div.item img::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        border-radius: 20px; /* Match the image border radius */
+        transition: opacity 0.5s ease-in-out; /* Smooth transition for the overlay */
+        opacity: 0; /* Initially invisible */
+    }
+
+    div.item:hover img::before {
+        opacity: 1; /* Show the overlay on hover */
+    }
+
+    div.item:nth-of-type(1) {
+        --offset: 1;
+    }
+
+    div.item:nth-of-type(2) {
+        --offset: 2;
+    }
+
+    div.item:nth-of-type(3) {
+        --offset: 3;
+    }
+
+    div.item:nth-of-type(4) {
+        --offset: 4;
+    }
+
+    div.item:nth-of-type(5) {
+        --offset: 5;
+    }
+
+    .radios {
+        position: absolute;
+        left: 45%;
+        top: 150%; /* Move radios slightly up */
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        grid-column: 1 / 8;
+        grid-row: 2 / 3;
+        justify-content: center;
+        pointer-events: auto;
+        padding: 2%;
+    }
+
+    .radios input[type="radio"] {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked {
+        background-color: #fff;
+    }
+
+    .cream-container {
+        background-color: #fff8e1; /* Cream color */
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-top: 20px; /* Add space between hr and cream-container */
+    }
+    .cream-container2 {
+        background-color: #0a0a23; /* Cream color */
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-top: 20px; /* Add space between hr and cream-container */
+    }
+
+    /* Styles for the left and right sections inside the container */
+    .left-section {
+        display: flex;
+        align-items: center;
+    }
+
+    .right-section {
+        display: flex;
+        flex-direction: column; /* Display text and button in a column */
+        align-items: center;
+    }
+
+
+    .right-section2 {
+        display: flex;
+        align-items: center;
+    }
+
+    .left-section2 {
+        display: flex;
+        flex-direction: column; /* Display text and button in a column */
+        align-items: center;
+    }
 
 
 
+    /* Styles for the image */
+    .image {
+        width: 500px; /* Adjust the width as needed */
+        height: auto;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-left: 200px;
+    }
+    .image2 {
+        width: 500px; /* Adjust the width as needed */
+        height: auto;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-right: 400px;
+    }
 
+    /* Styles for the bold text and explore button */
+    .text {
+        font-weight: bold;
+        margin-bottom: 10px; /* Add space between text and button */
+        margin-right: 400px;
+    }
+    .text2 {
+        position: relative;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 10px; /* Add space between text and button */
+        margin-left: 400px;
+    }
 
+    .explore-button {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-right: 400px;
+    }
+    .gallery-button {
+        background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: 400px;
+    }
 
-<div class="row row-content adjustable-margin" style="color: rgb(237, 236, 236);">
-    <div class="col-lg-6">
-        <div class="row">
-            <div class="col-lg-6">
-                <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
-            </div>
-            <div class="col-lg-6">
-                <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
-            </div>
+    .explore-button:hover {
+        background-color: #333; /* Darker shade of black on hover */
+    }
+
+    /*{border: 1px solid red;}*/
+
+</style>
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+<div class="cream-container2">
+    <div class="left-section2">
+        <div class="text2">
+            "Discover the artistic world of Abu Pashaev."
         </div>
+        <button class="gallery-button">GALLERY</button>
+    </div>
+    <div class="right-section2">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
     </div>
 </div>
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<main id="carousel">
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img1.jpg') }}" alt="Image 1">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img2.jpg') }}" alt="Image 2">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img3.jpg') }}" alt="Image 3">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img4.jpg') }}" alt="Image 4">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img5.jpg') }}" alt="Image 5">
+    </div>
+</main>
+
+<div class="radios">
+    <input type="radio" name="position" onclick="updateCarousel(1)" />
+    <input type="radio" name="position" onclick="updateCarousel(2)" />
+    <input type="radio" name="position" onclick="updateCarousel(3)" checked />
+    <input type="radio" name="position" onclick="updateCarousel(4)" />
+    <input type="radio" name="position" onclick="updateCarousel(5)" />
+</div>
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<div class="cream-container">
+    <div class="left-section">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+    </div>
+    <div class="right-section">
+        <div class="text">
+            "Discover the artistic world of Abu Pashaev."
+        </div>
+        <button class="explore-button">Explore</button>
+    </div>
+</div>
+
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+
+
+
+
+
+
+
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<script>
+    function updateCarousel(position) {
+        document.querySelectorAll('#carousel .item').forEach(item => {
+            item.style.setProperty('--position', position);
+        });
+    }
+</script>
 
 {% endblock %}

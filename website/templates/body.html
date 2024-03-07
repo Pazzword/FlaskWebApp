@@ -11,31 +11,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/body.css') }}" />
-
-    <!-- Add this in the head section of your HTML file -->
     <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;300&display=swap" rel="stylesheet">
-
-    
 </head>
 
-<body>
-    <!-- Header section -->
-    <div class="row" style="background-color: #4f262f; margin: 0;">
-        <div class="above-navbar" style="font-family: 'Calibri', 'Calibri Light', sans-serif; display: flex; justify-content: space-between; align-items: center; font-size: 14px; width: 100%;">
-            <div style="flex-grow: 1; text-align: center;">
-                <img src="{{ url_for('static', filename='Images/abu_pashaevENG.png') }}" alt="Абу Пашев" style="width: 100%;">
-                "Beyond Traditions: The World of Abstract Art"
-            </div>
-            <div style="margin-left: auto;">
-                <img src="{{ url_for('static', filename='Images/sign2.png') }}" alt="Sign" style="max-width: 40%; margin: 20px 0 10px;">
-            </div>
-        </div>
-    </div>
-    
-    
-    
-    
-    
+<body> 
  <!-- Main navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="navbar-nav mx-auto">
@@ -58,7 +37,7 @@
     </nav>
 
     <!-- Main content -->
-    <div class="container">
+    <div>
         {% block content %}
         {% endblock %}
     </div>
@@ -89,10 +68,7 @@
             </div>
         </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <!-- Include any other scripts as needed -->
-
 </body>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 </html>
