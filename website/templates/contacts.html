@@ -1,6 +1,5 @@
 {% extends "body.html" %}
 
-
 {% block title %}
   Contacts
 {% endblock %}
@@ -9,29 +8,119 @@
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}">
 </head>
+<style>
+  .body2 {
+    height: 100vh;
+    width: 88vw;
+    background-color: #0a0a23; /* Fixed typo in background color */
+    margin: 0;
+    overflow: hidden;
+}
+
+
+#image-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%; /* Adjust this value to move the images down */
+    transform: translate(-50%, -50%);
+    max-width: calc(100% - 8vmin); /* Ensure the track does not exceed the page width */
+    overflow-x: auto; /* Add horizontal scrolling for overflow */
+    scrollbar-width: none; /* Hide the scrollbar */
+    -ms-overflow-style: none; /* Hide the scrollbar for IE/Edge */
+    user-select: none; /* -- Prevent image highlighting -- */
+}
+
+/* Hide scrollbar for Firefox */
+#image-track::-webkit-scrollbar {
+    display: none;
+}
+
+#image-track > .image {
+  width: 20vmin;
+  height: 50vmin;
+  object-fit: cover;
+  object-position: 100% center;
+}
+
+</style>
 
 
 
-
-<div class="contact-container">
-  <h1>Contact details</h1>
-  
-  <section class="contact-section">
-    <h2>Email</h2>
-    <p>YourEmail@example.com</p>
-  </section>
-
-  <section class="contact-section">
-    <h2>Phone</h2>
-
-    <p>+1 (555) 123-4567</p>
-  </section>
-
-  <section class="contact-section">
-    <h2>Social Media</h2>
-    <img src="/static/Images/instagram_square.png" alt="WhatsApp Messenger" width="50" height="50">
-    <img src="/static/Images/wazup.png" alt="WhatsApp Messenger" width="50" height="50">
-  </section>
+<div class="body2">
+  <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+    <img class="image" src="static/Images/LatestIMG/IMG26.jpg" draggable="false" />
+    <img class="image" src="static/Images/LatestIMG/IMG27.jpg" draggable="false" />
+    <img class="image" src="static/Images/LatestIMG/IMG28.jpg" draggable="false" />
+    <img class="image" src="static/Images/LatestIMG/IMG29.jpg" draggable="false" />
+    <img class="image" src="static/Images/LatestIMG/IMG30.jpg" draggable="false" />
+  </div>
 </div>
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+<script>
+  // Top Image Slider
+  function preloadImages() {
+        const images = [
+            "static/Images/LatestIMG/IMG8.jpg",
+            "static/Images/LatestIMG/IMG9.jpg",
+            "static/Images/LatestIMG/IMG10.jpg",
+            "static/Images/LatestIMG/IMG11.jpg"
+        ];
+
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    }
+
+    // Call preload function when the page loads
+    window.onload = preloadImages();
+
+  const track = document.getElementById("image-track");
+
+  const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+  const handleOnUp = () => {
+    track.dataset.mouseDownAt = "0";  
+    track.dataset.prevPercentage = track.dataset.percentage;
+  };
+
+  const handleOnMove = e => {
+    if (track.dataset.mouseDownAt === "0") return;
+    
+    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+          maxDelta = window.innerWidth / 2;
+    
+    const percentage = (mouseDelta / maxDelta) * -100,
+          nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+    
+    track.dataset.percentage = nextPercentage;
+    
+    track.animate({
+      transform: `translate(${nextPercentage}%, -50%)`
+    }, { duration: 1200, fill: "forwards" });
+    
+    for (const image of track.getElementsByClassName("image")) {
+      image.animate({
+        objectPosition: `${100 + nextPercentage}% center`
+      }, { duration: 1200, fill: "forwards" });
+    }
+  };
+
+  /* --  extra lines for touch events -- */
+
+  window.onmousedown = e => handleOnDown(e);
+
+  window.ontouchstart = e => handleOnDown(e.touches[0]);
+
+  window.onmouseup = e => handleOnUp(e);
+
+  window.ontouchend = e => handleOnUp(e.touches[0]);
+
+  window.onmousemove = e => handleOnMove(e);
+
+  window.ontouchmove = e => handleOnMove(e.touches[0]);
+</script>
 {% endblock %}

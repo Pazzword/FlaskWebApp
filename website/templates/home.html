@@ -1,6 +1,7 @@
 {% extends "body.html" %}
 {% block title %}HOME{% endblock %}
 {% block content %}
+
 <style scoped>
     body {
         background-color: #0a0a23;
@@ -9,7 +10,7 @@
     main#carousel {
         grid-row: 1 / 1;
         grid-column: 1 / 8;
-        width: 100vw;
+        width: 85vw;
         height: 450px;
         display: flex;
         align-items: center;
@@ -82,34 +83,7 @@
         --offset: 5;
     }
 
-    .radios {
-        position: absolute;
-        left: 45%;
-        top: 150%; /* Move radios slightly up */
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: 1fr;
-        grid-column: 1 / 8;
-        grid-row: 2 / 3;
-        justify-content: center;
-        pointer-events: auto;
-        padding: 2%;
-    }
 
-    .radios input[type="radio"] {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-        border-radius: 50%;
-        border: 2px solid #fff;
-        background-color: transparent;
-        cursor: pointer;
-    }
-
-    input[type="radio"]:checked {
-        background-color: #fff;
-    }
 
     .cream-container {
         background-color: #fff8e1; /* Cream color */
@@ -164,28 +138,30 @@
         height: auto;
         border-radius: 20px; /* Adding curved edges */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
-        margin-left: 200px;
+        margin-left: 100px;
     }
     .image2 {
         width: 500px; /* Adjust the width as needed */
         height: auto;
         border-radius: 20px; /* Adding curved edges */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
-        margin-right: 400px;
+        margin-right: 200px;
     }
 
     /* Styles for the bold text and explore button */
     .text {
+        font-family: 'Comfortaa', sans-serif;
         font-weight: bold;
         margin-bottom: 10px; /* Add space between text and button */
         margin-right: 400px;
     }
     .text2 {
+        font-family: 'Comfortaa', sans-serif;
         position: relative;
         color: white;
         font-weight: bold;
         margin-bottom: 10px; /* Add space between text and button */
-        margin-left: 400px;
+        margin-left: 200px;
     }
 
     .explore-button {
@@ -206,28 +182,103 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
-        margin-left: 400px;
+        margin-left: 200px;
     }
 
     .explore-button:hover {
         background-color: #333; /* Darker shade of black on hover */
     }
 
-    /*{border: 1px solid red;}*/
+
+    /* Top Image Slider */
+    .body2 {
+        position: relative;
+    height: 60vh;
+    width: 87vw;
+    background-color: #0a0a23; /* Fixed typo in background color */
+    margin: 0;
+    overflow: hidden;
+}
+
+#image-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%; /* Adjust this value to move the images down */
+    transform: translate(-50%, -50%);
+    max-width: calc(100% - 8vmin); /* Ensure the track does not exceed the page width */
+    overflow-x: auto; /* Add horizontal scrolling for overflow */
+    scrollbar-width: none; /* Hide the scrollbar */
+    -ms-overflow-style: none; /* Hide the scrollbar for IE/Edge */
+    user-select: none; /* -- Prevent image highlighting -- */
+}
+
+/* Hide scrollbar for Firefox */
+#image-track::-webkit-scrollbar {
+    display: none;
+}
+
+#image-track > .images {
+  width: 20vmin;
+  height: 50vmin;
+  object-fit: cover;
+  object-position: 100% center;
+}
+
+
+.container {
+    
+  max-width: 124rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+  color: #ffffff;
+  font-family: "Comfortaa";
+  src: url('fonts/Comfortaa.ttf') format('truetype');
+}
+
+.custom-heading {
+  font-size: 24px;
+  color: #ec994b;
+}
+
+/*{border: 1px solid red;}*/
 
 </style>
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-<div class="cream-container2">
-    <div class="left-section2">
-        <div class="text2">
+
+<div class="container-fluid">
+    <h1 class="text-center larger-name"> Abu Pashaev </h1>
+    <h2 class="text-center custom-heading "> "Nostalgia is a passing phrase of infinity." </h2>
+  </div>
+
+<div class="body2">
+    <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+      <img class="images" src="static/Images/LatestIMG/IMG26.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG27.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG28.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG29.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG30.jpg" draggable="false" />
+    </div>
+  </div>
+
+
+  <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+<div class="cream-container">
+    <div class="left-section">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+    </div>
+    <div class="right-section">
+        <div class="text">
             "Discover the artistic world of Abu Pashaev."
         </div>
-        <button class="gallery-button">GALLERY</button>
-    </div>
-    <div class="right-section2">
-        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
+        <button class="explore-button">Explore</button>
     </div>
 </div>
+
 
 <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
@@ -249,24 +300,17 @@
     </div>
 </main>
 
-<div class="radios">
-    <input type="radio" name="position" onclick="updateCarousel(1)" />
-    <input type="radio" name="position" onclick="updateCarousel(2)" />
-    <input type="radio" name="position" onclick="updateCarousel(3)" checked />
-    <input type="radio" name="position" onclick="updateCarousel(4)" />
-    <input type="radio" name="position" onclick="updateCarousel(5)" />
-</div>
 <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
-<div class="cream-container">
-    <div class="left-section">
-        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
-    </div>
-    <div class="right-section">
-        <div class="text">
+<div class="cream-container2">
+    <div class="left-section2">
+        <div class="text2">
             "Discover the artistic world of Abu Pashaev."
         </div>
-        <button class="explore-button">Explore</button>
+        <button class="gallery-button">GALLERY</button>
+    </div>
+    <div class="right-section2">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
     </div>
 </div>
 
@@ -282,11 +326,93 @@
 <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
 <script>
-    function updateCarousel(position) {
-        document.querySelectorAll('#carousel .item').forEach(item => {
-            item.style.setProperty('--position', position);
+    let currentPosition = 1; // Initial position
+    const totalItems = document.querySelectorAll('#carousel .item').length;
+    const interval = 5000; // Change slide every 5 seconds
+    const transitionDuration = 2; // Duration of transition between slides in seconds
+
+    function updateCarousel() {
+        const currentItem = document.querySelector(`#carousel .item:nth-of-type(${currentPosition})`);
+        currentItem.style.transition = `transform ${transitionDuration}s ease-in-out`;
+        currentItem.style.transform = `rotateY(calc(-10deg * 0)) translateX(calc(-300px * 0))`; // Reset the current slide
+
+        currentPosition = (currentPosition % totalItems) + 1; // Move to the next slide
+        const nextItem = document.querySelector(`#carousel .item:nth-of-type(${currentPosition})`);
+        nextItem.style.transition = `transform ${transitionDuration}s ease-in-out`;
+        nextItem.style.transform = `rotateY(calc(-10deg * 1)) translateX(calc(-300px * 1))`; // Apply transformation to the next slide
+
+        setTimeout(updateCarousel, transitionDuration * 1000); // Schedule the next update
+    }
+
+    updateCarousel(); // Start the slideshow
+
+
+
+      // Top Image Slider
+  function preloadImages() {
+        const images = [
+            "static/Images/LatestIMG/IMG26.jpg",
+            "static/Images/LatestIMG/IMG27.jpg",
+            "static/Images/LatestIMG/IMG28.jpg",
+            "static/Images/LatestIMG/IMG29.jpg",
+            "static/Images/LatestIMG/IMG30.jpg"
+        ];
+
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
         });
     }
+
+    // Call preload function when the page loads
+    window.onload = preloadImages();
+
+  const track = document.getElementById("image-track");
+
+  const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+  const handleOnUp = () => {
+    track.dataset.mouseDownAt = "0";  
+    track.dataset.prevPercentage = track.dataset.percentage;
+  };
+
+  const handleOnMove = e => {
+    if (track.dataset.mouseDownAt === "0") return;
+    
+    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+          maxDelta = window.innerWidth / 2;
+    
+    const percentage = (mouseDelta / maxDelta) * -100,
+          nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+    
+    track.dataset.percentage = nextPercentage;
+    
+    track.animate({
+      transform: `translate(${nextPercentage}%, -50%)`
+    }, { duration: 1200, fill: "forwards" });
+    
+    for (const image of track.getElementsByClassName("images")) {
+      image.animate({
+        objectPosition: `${100 + nextPercentage}% center`
+      }, { duration: 1200, fill: "forwards" });
+    }
+  };
+
+  /* --  extra lines for touch events -- */
+
+  window.onmousedown = e => handleOnDown(e);
+
+  window.ontouchstart = e => handleOnDown(e.touches[0]);
+
+  window.onmouseup = e => handleOnUp(e);
+
+  window.ontouchend = e => handleOnUp(e.touches[0]);
+
+  window.onmousemove = e => handleOnMove(e);
+
+  window.ontouchmove = e => handleOnMove(e.touches[0]);
 </script>
+
 
 {% endblock %}
