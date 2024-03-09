@@ -2,31 +2,417 @@
 {% block title %}HOME{% endblock %}
 {% block content %}
 
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-</head>
+<style scoped>
+    body {
+        background-color: #0a0a23;
+    }
 
-<!-- Section after navbar -->
+    main#carousel {
+        grid-row: 1 / 1;
+        grid-column: 1 / 8;
+        width: 85vw;
+        height: 450px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        perspective: 600px;
+        --items: 5;
+        --middle: 3;
+        --position: 3;
+        pointer-events: none;
+    }
 
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+    div.item {
+        text-align: center;
+        padding: 20px;
+        border-radius: 20px;
+        position: absolute;
+        width: 300px;
+        height: 400px;
+        --r: calc(var(--position) - var(--offset));
+        --abs: max(calc(var(--r) * -1), var(--r));
+        transition: transform 0.5s ease-in-out;
+        transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-300px * var(--r)));
+        z-index: calc((var(--position) - var(--abs)));
+    }
+
+    div.item img {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px; /* Adding smooth curved edges */
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+    }
+
+    div.item img::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        border-radius: 20px; /* Match the image border radius */
+        transition: opacity 0.5s ease-in-out; /* Smooth transition for the overlay */
+        opacity: 0; /* Initially invisible */
+    }
+
+    div.item:hover img::before {
+        opacity: 1; /* Show the overlay on hover */
+    }
+
+    div.item:nth-of-type(1) {
+        --offset: 1;
+    }
+
+    div.item:nth-of-type(2) {
+        --offset: 2;
+    }
+
+    div.item:nth-of-type(3) {
+        --offset: 3;
+    }
+
+    div.item:nth-of-type(4) {
+        --offset: 4;
+    }
+
+    div.item:nth-of-type(5) {
+        --offset: 5;
+    }
 
 
 
+    .cream-container {
+        background-color: #fff8e1; /* Cream color */
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-top: 20px; /* Add space between hr and cream-container */
+    }
+    .cream-container2 {
+        background-color: #0a0a23; /* Cream color */
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-top: 20px; /* Add space between hr and cream-container */
+    }
+
+    /* Styles for the left and right sections inside the container */
+    .left-section {
+        display: flex;
+        align-items: center;
+    }
+
+    .right-section {
+        display: flex;
+        flex-direction: column; /* Display text and button in a column */
+        align-items: center;
+    }
+
+
+    .right-section2 {
+        display: flex;
+        align-items: center;
+    }
+
+    .left-section2 {
+        display: flex;
+        flex-direction: column; /* Display text and button in a column */
+        align-items: center;
+    }
 
 
 
-<div class="row row-content adjustable-margin" style="color: rgb(237, 236, 236);">
-    <div class="col-lg-6">
-        <div class="row">
-            <div class="col-lg-6">
-                <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
-            </div>
-            <div class="col-lg-6">
-                <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
-            </div>
+    /* Styles for the image */
+    .image {
+        width: 500px; /* Adjust the width as needed */
+        height: auto;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-left: 100px;
+    }
+    .image2 {
+        width: 500px; /* Adjust the width as needed */
+        height: auto;
+        border-radius: 20px; /* Adding curved edges */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
+        margin-right: 200px;
+    }
+
+    /* Styles for the bold text and explore button */
+    .text {
+        font-family: 'Comfortaa', sans-serif;
+        font-weight: bold;
+        margin-bottom: 10px; /* Add space between text and button */
+        margin-right: 400px;
+    }
+    .text2 {
+        font-family: 'Comfortaa', sans-serif;
+        position: relative;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 10px; /* Add space between text and button */
+        margin-left: 200px;
+    }
+
+    .explore-button {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-right: 400px;
+    }
+    .gallery-button {
+        background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: 200px;
+    }
+
+    .explore-button:hover {
+        background-color: #333; /* Darker shade of black on hover */
+    }
+
+
+    /* Top Image Slider */
+    .body2 {
+        position: relative;
+    height: 60vh;
+    width: 87vw;
+    background-color: #0a0a23; /* Fixed typo in background color */
+    margin: 0;
+    overflow: hidden;
+}
+
+#image-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%; /* Adjust this value to move the images down */
+    transform: translate(-50%, -50%);
+    max-width: calc(100% - 8vmin); /* Ensure the track does not exceed the page width */
+    overflow-x: auto; /* Add horizontal scrolling for overflow */
+    scrollbar-width: none; /* Hide the scrollbar */
+    -ms-overflow-style: none; /* Hide the scrollbar for IE/Edge */
+    user-select: none; /* -- Prevent image highlighting -- */
+}
+
+/* Hide scrollbar for Firefox */
+#image-track::-webkit-scrollbar {
+    display: none;
+}
+
+#image-track > .images {
+  width: 20vmin;
+  height: 50vmin;
+  object-fit: cover;
+  object-position: 100% center;
+}
+
+
+.container {
+    
+  max-width: 124rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+  color: #ffffff;
+  font-family: "Comfortaa";
+  src: url('fonts/Comfortaa.ttf') format('truetype');
+}
+
+.custom-heading {
+  font-size: 24px;
+  color: #ec994b;
+}
+
+/*{border: 1px solid red;}*/
+
+</style>
+
+<div class="container-fluid">
+    <h1 class="text-center larger-name"> Abu Pashaev </h1>
+    <h2 class="text-center custom-heading "> "Nostalgia is a passing phrase of infinity." </h2>
+  </div>
+
+<div class="body2">
+    <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+      <img class="images" src="static/Images/LatestIMG/IMG26.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG27.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG28.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG29.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG30.jpg" draggable="false" />
+    </div>
+  </div>
+
+
+  <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+<div class="cream-container">
+    <div class="left-section">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+    </div>
+    <div class="right-section">
+        <div class="text">
+            "Discover the artistic world of Abu Pashaev."
         </div>
+        <button class="explore-button">Explore</button>
     </div>
 </div>
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<main id="carousel">
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img1.jpg') }}" alt="Image 1">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img2.jpg') }}" alt="Image 2">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img3.jpg') }}" alt="Image 3">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img4.jpg') }}" alt="Image 4">
+    </div>
+    <div class="item">
+        <img src="{{ url_for('static', filename='Images/LatestImg/Img5.jpg') }}" alt="Image 5">
+    </div>
+</main>
+
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<div class="cream-container2">
+    <div class="left-section2">
+        <div class="text2">
+            "Discover the artistic world of Abu Pashaev."
+        </div>
+        <button class="gallery-button">GALLERY</button>
+    </div>
+    <div class="right-section2">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
+    </div>
+</div>
+
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+
+
+
+
+
+
+
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<script>
+    let currentPosition = 1; // Initial position
+    const totalItems = document.querySelectorAll('#carousel .item').length;
+    const interval = 5000; // Change slide every 5 seconds
+    const transitionDuration = 2; // Duration of transition between slides in seconds
+
+    function updateCarousel() {
+        const currentItem = document.querySelector(`#carousel .item:nth-of-type(${currentPosition})`);
+        currentItem.style.transition = `transform ${transitionDuration}s ease-in-out`;
+        currentItem.style.transform = `rotateY(calc(-10deg * 0)) translateX(calc(-300px * 0))`; // Reset the current slide
+
+        currentPosition = (currentPosition % totalItems) + 1; // Move to the next slide
+        const nextItem = document.querySelector(`#carousel .item:nth-of-type(${currentPosition})`);
+        nextItem.style.transition = `transform ${transitionDuration}s ease-in-out`;
+        nextItem.style.transform = `rotateY(calc(-10deg * 1)) translateX(calc(-300px * 1))`; // Apply transformation to the next slide
+
+        setTimeout(updateCarousel, transitionDuration * 1000); // Schedule the next update
+    }
+
+    updateCarousel(); // Start the slideshow
+
+
+
+      // Top Image Slider
+  function preloadImages() {
+        const images = [
+            "static/Images/LatestIMG/IMG26.jpg",
+            "static/Images/LatestIMG/IMG27.jpg",
+            "static/Images/LatestIMG/IMG28.jpg",
+            "static/Images/LatestIMG/IMG29.jpg",
+            "static/Images/LatestIMG/IMG30.jpg"
+        ];
+
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    }
+
+    // Call preload function when the page loads
+    window.onload = preloadImages();
+
+  const track = document.getElementById("image-track");
+
+  const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+  const handleOnUp = () => {
+    track.dataset.mouseDownAt = "0";  
+    track.dataset.prevPercentage = track.dataset.percentage;
+  };
+
+  const handleOnMove = e => {
+    if (track.dataset.mouseDownAt === "0") return;
+    
+    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+          maxDelta = window.innerWidth / 2;
+    
+    const percentage = (mouseDelta / maxDelta) * -100,
+          nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+    
+    track.dataset.percentage = nextPercentage;
+    
+    track.animate({
+      transform: `translate(${nextPercentage}%, -50%)`
+    }, { duration: 1200, fill: "forwards" });
+    
+    for (const image of track.getElementsByClassName("images")) {
+      image.animate({
+        objectPosition: `${100 + nextPercentage}% center`
+      }, { duration: 1200, fill: "forwards" });
+    }
+  };
+
+  /* --  extra lines for touch events -- */
+
+  window.onmousedown = e => handleOnDown(e);
+
+  window.ontouchstart = e => handleOnDown(e.touches[0]);
+
+  window.onmouseup = e => handleOnUp(e);
+
+  window.ontouchend = e => handleOnUp(e.touches[0]);
+
+  window.onmousemove = e => handleOnMove(e);
+
+  window.ontouchmove = e => handleOnMove(e.touches[0]);
+</script>
+
 
 {% endblock %}

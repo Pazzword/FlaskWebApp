@@ -1,5 +1,5 @@
 body {
-  background: url("/static/Images/brown.jpg") center / cover;
+  background-color: #0a0a23;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31,3 +31,6 @@ body {
   p {
     margin: 0;
   }
+  /*{
+    border: 1px solid red; }/* Add a red border to all elements for visualization
+}   To check errors 

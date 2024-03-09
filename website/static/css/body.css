@@ -57,7 +57,7 @@ body {
 
 
 .nav-item {
-    font-size: 22px; 
+    font-size: 15px; 
     margin: 0 40px; /* Add more horizontal spacing between options */
 }
 
@@ -74,6 +74,9 @@ body {
     background-color: #000000;
 }
 
+
+
+
 .footer-section {
     background-color:#4f262f;
     padding: 20px;
@@ -81,7 +84,6 @@ body {
     color: #ffffff;
     font-size: 15px;
     font-weight: bold;
-    border: 1px solid #000000;
     margin-top: auto;
 }
 

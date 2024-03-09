@@ -2,235 +2,13 @@
 {% block title %}Gallery{% endblock %}
 {% block content %}
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
     
 </head>
-<div class="container-fluid">
-  <h3 class="text-center larger-name"> Abu Pashaev </h3>
-  <h1 class="text-center custom-heading">"An Esoteric Perspective on Ancestral Symbols"</h1>
-</div>
-
-
-<section id="tranding">
-    <div class="container">
-      <div class="swiper tranding-slider">
-        <div class="swiper-wrapper">
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="static/Images/LatestIMG/IMG8.jpg" alt="Tranding">
-            </div>
-            <div class="tranding-slide-content">
-              <h1 class="food-price">$20</h1>
-              <div class="tranding-slide-content-bottom">
-                <h2 class="">
-                    "Reflected Past Through Time and Space"<br>
-                    1999
-                    
-                </h2>
-                <h3 class="food-rating">
-                  <span>4.5</span>
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="static/Images/LatestIMG/IMG19.jpg" alt="Tranding">
-            </div>
-            <div class="tranding-slide-content">
-              <h1 class="food-price">$20</h1>
-              <div class="tranding-slide-content-bottom">
-                <h2 class="">
-                    "Contemplation Through Time and Space"<br>
-                    1994
-                </h2>
-                <h3 class="food-rating">
-                  <span>4.5</span>
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="static/Images/LatestIMG/IMG18.jpg" alt="Tranding">
-            </div>
-            <div class="tranding-slide-content">
-              <h1 class="food-price">$40</h1>
-              <div class="tranding-slide-content-bottom">
-                <h2 class="">
-                    "Date by the Erzi Towers"<br>
-                    1996
-                </h2>
-                <h3 class="food-rating">
-                  <span>4.5</span>
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="static/Images/LatestIMG/IMG17.jpg" alt="Tranding">
-            </div>
-            <div class="tranding-slide-content">
-              <h1 class="food-price">$15</h1>
-              <div class="tranding-slide-content-bottom">
-                <h2 class="">
-                    "The Past Reflected in the Present"<br>
-                    1994
-                </h2>
-                <h3 class="food-rating">
-                  <span>4.5</span>
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="static/Images/LatestIMG/IMG16.jpg" alt="Tranding">
-            </div>
-            <div class="tranding-slide-content">
-              <h1 class="food-price">$15</h1>
-              <div class="tranding-slide-content-bottom">
-                <h2 class="">
-                "Interrupted Flight"<br>
-                1994
-                </h2>
-                <h3 class="food-rating">
-                  <span>4.5</span>
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="static/Images/LatestIMG/IMG15.jpg" alt="Tranding">
-            </div>
-            <div class="tranding-slide-content">
-              <h1 class="food-price">$20</h1>
-              <div class="tranding-slide-content-bottom">
-                <h2 class="">
-                  "Spring"<br>
-                  2018
-                </h2>
-                <h3 class="food-rating">
-                  <span>4.5</span>
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="static/Images/LatestIMG/IMG14.jpg" alt="Tranding">
-            </div>
-            <div class="tranding-slide-content">
-              <h1 class="food-price">$8</h1>
-              <div class="tranding-slide-content-bottom">
-                <h2 class="">
-                  "The Tree"<br>
-                  2000
-                </h2>
-                <h3 class="food-rating">
-                  <span>4.5</span>
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <!-- Slide-end -->
-        </div>
-
-        <div class="tranding-slider-control">
-          <div class="swiper-button-prev slider-arrow">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </div>
-          <div class="swiper-button-next slider-arrow">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-</div>
-
-
-
-
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 <div class="cream-container">
     <div class="left-section">
-        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG7.jpg') }}" alt="Image 10" class="image2">
     </div>
     <div class="right-section">
         <div class="text">
@@ -239,21 +17,6 @@
         <button class="explore-button">Explore</button>
     </div>
 </div>
-<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-
-<div class="cream-container2">
-  <div class="left-section2">
-      <div class="text2">
-          "Discover the artistic world of Abu Pashaev."
-      </div>
-      <button class="gallery-button">GALLERY</button>
-  </div>
-  <div class="right-section2">
-      <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
-  </div>
-</div>
-
-
 
 <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
@@ -267,8 +30,6 @@
 </div>
 
 <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-
-
 
 
 <div class="grid-container">
@@ -430,8 +191,6 @@
 
 
 </div>
-
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
@@ -453,28 +212,5 @@ function closeModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
 }
-
-//SLIDER//
-var TrandingSlider = new Swiper('.tranding-slider', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    loop: true,
-    slidesPerView: 'auto',
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 100,
-      modifier: 2.5,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    }
-  });
 </script>
 {% endblock %}
