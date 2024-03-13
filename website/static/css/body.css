@@ -14,24 +14,7 @@ body {
     margin: 0;
     padding: 0;
 }
-.header-top {
-    padding: 24px 0 24px;
-}
 
-.above-navbar {
-    background-color:#4f262f;
-    text-align: center;
-    color: #ffffff;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.above-navbar img {
-    width: 100%; /* Changed to 100% to ensure responsiveness */
-    height: auto;
-    display: block;
-    margin: 5px auto 0; /* Adjusted margin to bring it down a bit */
-}
 
 .navbar {
     display: flex;

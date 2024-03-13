@@ -7,6 +7,10 @@
     <!-- Other head elements -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bio.css') }}">
 </head>
+<body class="body">
+<div class="container-fluid">
+    <h2 class="text-center custom-heading "> "Nostalgia is a passing phrase of infinity." </h2>
+  </div>
 
 
 
@@ -16,24 +20,37 @@
 
     <div class="row row-content">
         <div class="col-lg-6">
-            <h1>ABU PASHAEV </h1>
-            <img src="{{ url_for('static', filename='Images/avatar.jpg') }}" alt="Abu Pashaev" class="img-fluid rounded">
-            Abu Pashaev 2024
+            <img src="{{ url_for('static', filename='Images/avatar-circle.png') }}" alt="Abu Pashaev" class="img-fluid rounded">
         </div>
-        <div class="col-lg-6" style="background-color: #4f262f; color: rgb(Your_Text_R, Your_Text_G, Your_Text_B);">
-            {{ bio }}
+        <div class="col-lg-6" style="margin-top: 80px;">
+            Abu Pashaev, born in 1966 in Chechen-Aul, is a distinguished artist whose life journey shapes his profound creations. From serving in the Soviet Army to graduating in graphic design, Pashaev's diverse experiences manifest in his artwork. Seeking guidance from renowned Chechen artists and integrating martial arts philosophy, he crafted his style, "Wind." His graphic series, like "You Don't Know How Painful It Is!," explores inner worlds with titles such as "Scream" and "Apocalypse."
+        </div>
+    </div>
 
+    <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+    <div class="white-container">
+        <h1>Where Art Meets Emotion, and Every Stroke Tells a Story.</h1>
+        {{ text }} 
+
+
+
+
+    
+    <hr class="row row-content" class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+        <div class="col-lg-6">
+            Pashaev's works express universal themes of pain, solitude, and the human condition, showcasing his ability to convey deep emotions through a meticulous artistic process. His inaugural exhibition, "Atomic Heart of My Mom" (1992), marked the beginning of a significant artistic journey. Abu Pashaev emerges as an artist whose profound expressions resonate with the complexities of human existence.
             <!-- Image Slider -->
             <div class="slider-container">
                 <div class="slides">
-                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper1.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper1.jpg') }}" alt="Blue">
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='static/Images/bio/school1.jpg') }}')">
+                        <img src="{{ url_for('static', filename='Images/bio/schoolStone.jpg') }}" alt="Blue">
                     </div>
                     <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper2.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper2.jpg') }}" alt="Yellow">
+                        <img src="{{ url_for('static', filename='Images/bio/school1.jpg') }}" alt="Yellow">
                     </div>
                     <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper3.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper3.jpg') }}" alt="Bridge">
+                        <img src="{{ url_for('static', filename='Images/bio/schoolCeramic.jpg') }}" alt="Bridge">
                     </div>
                     <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper4.jpg') }}')">
                         <img src="{{ url_for('static', filename='newspapers/newspaper4.jpg') }}" alt="Back">
@@ -41,37 +58,39 @@
                     <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper5.jpg') }}')">
                         <img src="{{ url_for('static', filename='newspapers/newspaper5.jpg') }}" alt="Sun">
                     </div>
-                    
                 </div>
-
+            
                 <!-- Dots to count images -->
                 <div class="dots-container">
                     {% for _ in range(1, 6) %}
                         <div class="dot" onclick="currentSlide({{ loop.index }})"></div>
                     {% endfor %}
-                </div>
-                
+                </div>   
             </div>
         </div>
-    </div>
+    
 
-    <div class="white-container">
-        <h1>Where Art Meets Emotion, and Every Stroke Tells a Story.</h1>
-        {{ text }} 
+
+
 
     <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-
-
-
-    <div class="row row-content">
-        
-        <div class="col-lg-6 order-lg-1">
-            <img src="{{ url_for('static', filename='Images/freeman.png') }}" alt="Freeman" class="img rounded" style="width: 100%;">
-        </div>  
-    </div>
-
-    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 0px 0;">
-
+    <div class="cream-container2">
+        <div class="left-section2">
+            <div class="text2">
+                "Discover the artistic world of Abu Pashaev."
+            </div>
+            <button class="gallery-button">GALLERY</button>
+        </div>
+        <div class="right-section2">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
+        </div>
+      </div>
+      
+  
+      
+      
+      
+    <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
     <div class="row row-content adjustable-margin" style="color: rgb(237, 236, 236);">
         <div class="col-lg-6">
             <h1>BOTTOM TEXT</h1>
@@ -86,7 +105,37 @@
             </div>
         </div>
     </div>
+
+
+
     <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+    <div class="cream-container">
+        <div class="left-section">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+        </div>
+        <div class="right-section">
+            <div class="text">
+                "Discover the artistic world of Abu Pashaev."
+            </div>
+            <button class="explore-button">Explore</button>
+        </div>
+    </div>
+    
+
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+
+
+    <div class="row row-content">
+        
+        <div class="col-lg-6 order-lg-1">
+            <img src="{{ url_for('static', filename='Images/freeman.png') }}" alt="Freeman" class="img rounded" style="width: 100%;">
+        </div>  
+    </div>
+
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 0px 0;">
+
+
 
 
     
@@ -204,6 +253,6 @@
     <img id="enlargedImg" alt="">
 </div>
 
-
+</body>
 <script src="static/js/script.js"></script>
 {% endblock %}

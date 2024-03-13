@@ -3,17 +3,18 @@
 {% block content %}
 
 <style scoped>
+    
     body {
         background-color: #0a0a23;
     }
 
     main#carousel {
+        margin-left: 5%;
         grid-row: 1 / 1;
         grid-column: 1 / 8;
-        width: 85vw;
+        width: 55vw;
         height: 450px;
         display: flex;
-        align-items: center;
         justify-content: center;
         overflow: hidden;
         transform-style: preserve-3d;
@@ -152,10 +153,12 @@
     .text {
         font-family: 'Comfortaa', sans-serif;
         font-weight: bold;
+        text-align: center;
         margin-bottom: 10px; /* Add space between text and button */
         margin-right: 400px;
     }
     .text2 {
+        text-align: center;
         font-family: 'Comfortaa', sans-serif;
         position: relative;
         color: white;
@@ -172,7 +175,7 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
-        margin-right: 400px;
+        margin-right: 75px;
     }
     .gallery-button {
         background-color: white;
@@ -192,7 +195,7 @@
 
     /* Top Image Slider */
     .body2 {
-        position: relative;
+    position: relative;
     height: 60vh;
     width: 87vw;
     background-color: #0a0a23; /* Fixed typo in background color */
@@ -239,11 +242,71 @@
   color: #ffffff;
   font-family: "Comfortaa";
   src: url('fonts/Comfortaa.ttf') format('truetype');
+  text-align: center
 }
 
 .custom-heading {
   font-size: 24px;
   color: #ec994b;
+  
+}
+
+.carouselText {
+    width: 30%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    text-align: center;
+}
+
+.row {
+    width: 98%;
+    margin-left: 1%;
+}
+
+.p {
+    text-align: center;
+    font-size:26px; 
+    color: #ffffff;
+    padding: 3%;
+    
+}
+
+.help {
+    width: 25%;
+    text-align: center;
+    margin-left: 20%;
+    font-family: "Comfortaa";
+    src: url('fonts/Comfortaa.ttf') format('truetype');
+    border-radius: 20px; /* Adding curved edges */
+}
+
+.contact-button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 400px;
+    margin-top: 4%;
+    
+}
+
+.bottomBottom {
+    font-family: "Comfortaa";
+    src: url('fonts/Comfortaa.ttf') format('truetype');
+    color: #ffffff;
+    font-size: 16px;
+    display: flex;
+}
+
+.textFont {
+    font-family: "Comfortaa";
+    src: url('fonts/Comfortaa.ttf') format('truetype');
 }
 
 /*{border: 1px solid red;}*/
@@ -258,10 +321,10 @@
 <div class="body2">
     <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
       <img class="images" src="static/Images/LatestIMG/IMG26.jpg" draggable="false" />
-      <img class="images" src="static/Images/LatestIMG/IMG27.jpg" draggable="false" />
-      <img class="images" src="static/Images/LatestIMG/IMG28.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG7.jpg" draggable="false" />
       <img class="images" src="static/Images/LatestIMG/IMG29.jpg" draggable="false" />
-      <img class="images" src="static/Images/LatestIMG/IMG30.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG28.jpg" draggable="false" />
+      <img class="images" src="static/Images/LatestIMG/IMG27.jpg" draggable="false" />
     </div>
   </div>
 
@@ -269,19 +332,25 @@
   <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 <div class="cream-container">
     <div class="left-section">
-        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+        <img src="{{ url_for('static', filename='Images/freeman.png') }}" alt="Image 10" class="image">
     </div>
     <div class="right-section">
-        <div class="text">
-            "Discover the artistic world of Abu Pashaev."
+        <div class="text" style="margin-left: 40%; width: 80%; font-size: 24px;">
+            "Curious to learn more about the creative mind shaping these captivating artworks? Click below to explore the inspiring journey and unique perspective of our talented artist. "
         </div>
-        <button class="explore-button">Explore</button>
+        <button class="explore-button textFont">About Artist</button>
     </div>
 </div>
 
 
 <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
+
+
+<div class="row">
+<div class="carouselText">
+    An Esoteric Perspective on Ancestral Symbols
+</div>
 <main id="carousel">
     <div class="item">
         <img src="{{ url_for('static', filename='Images/LatestImg/Img1.jpg') }}" alt="Image 1">
@@ -299,31 +368,59 @@
         <img src="{{ url_for('static', filename='Images/LatestImg/Img5.jpg') }}" alt="Image 5">
     </div>
 </main>
+</div>
 
 <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
-<div class="cream-container2">
-    <div class="left-section2">
-        <div class="text2">
+<div class="cream-container2 row-container">
+    <div class="left-section2" style="margin-right: 13%;">
+        <div class="text2 textFont" style="font-size: 36px; color: #ec994b;">
             "Discover the artistic world of Abu Pashaev."
         </div>
-        <button class="gallery-button">GALLERY</button>
+        <button class="gallery-button textFont" >GALLERY</button>
     </div>
     <div class="right-section2">
         <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
     </div>
 </div>
-
 <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
 
 
+<p class="p textFont">
+    <span>
+        <strong>
+            Need more help?
+        </strong>
+    </span>
+</p>
 
 
-
+<button class="contact-button">Contact Us</button>
 
 
 <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<div class="row-bottom" style="display: flex; justify-content: space-between; margin-left: 2%; margin-right: 2%;">
+    <div>
+        <p><span style="font-size:20px;"><img alt="Value creation" src="static/Images/signGif.gif" style="height: 120px; width: 120px;"></span></p>
+    </div>
+    <div>
+        <p><span style="font-size:20px;"><img alt="Value creation" src="static/Images/signGif.gif" style="height: 120px; width: 120px;"></span></p>
+    </div>
+    <div>
+        <p><span style="font-size:20px;"><img alt="Value creation" src="static/Images/signGif.gif" style="height: 120px; width: 120px;"></span></p>
+    </div>
+    <div>
+        <p><span style="font-size:20px;"><img alt="Value creation" src="static/Images/signGif.gif" style="height: 120px; width: 120px;"></span></p>
+    </div>
+</div>
+
+
+
+
+
+
 
 <script>
     let currentPosition = 1; // Initial position
