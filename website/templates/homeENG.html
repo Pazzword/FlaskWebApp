@@ -1,92 +1,253 @@
-<style>
-  .body2 {
-  height: 100vh;
-  width: 100vw;
-  background-color: black;
-  margin: 0rem;
-  overflow: hidden;
-}
+{% extends "body.html" %}
 
-#image-track {
-  display: flex;
-  gap: 4vmin;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(0%, -50%); 
-  user-select: none; /* -- Prevent image highlighting -- */
-}
+{% block title %}Bio{% endblock %}
 
-#image-track > .image {
-  width: 40vmin;
-  height: 56vmin;
-  object-fit: cover;
-  object-position: 100% center;
-}
-
-
-</style>
-<div class="body2">
-  <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-    <img class="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
-    <img class="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
-    <img class="image" src="https://images.unsplash.com/photo-1618202133208-2907bebba9e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
-    <img class="image" src="https://images.unsplash.com/photo-1495805442109-bf1cf975750b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
-    <img class="image" src="https://images.unsplash.com/photo-1548021682-1720ed403a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
-    <img class="image" src="https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80" draggable="false" />
-    <img class="image" src="https://images.unsplash.com/photo-1613346945084-35cccc812dd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1759&q=80" draggable="false" />
-    <img class="image" src="https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+{% block content %}
+<head>
+    <!-- Other head elements -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bio.css') }}">
+</head>
+<div class="container-fluid">
+    <h2 class="text-center custom-heading "> "Nostalgia is a passing phrase of infinity." </h2>
   </div>
+
+
+
+
+
+
+
+    <div class="row row-content">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='Images/avatar-circle.png') }}" alt="Abu Pashaev" class="img-fluid rounded">
+        </div>
+        <div class="col-lg-6" style="margin-top: 80px;">
+            Abu Pashaev, born in 1966 in Chechen-Aul, is a distinguished artist whose life journey shapes his profound creations. From serving in the Soviet Army to graduating in graphic design, Pashaev's diverse experiences manifest in his artwork. Seeking guidance from renowned Chechen artists and integrating martial arts philosophy, he crafted his style, "Wind." His graphic series, like "You Don't Know How Painful It Is!," explores inner worlds with titles such as "Scream" and "Apocalypse."
+        </div>
+    </div>
+
+    <hr class="row row-content" class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+        <div class="col-lg-6" style=">
+            Pashaev's works express universal themes of pain, solitude, and the human condition, showcasing his ability to convey deep emotions through a meticulous artistic process. His inaugural exhibition, "Atomic Heart of My Mom" (1992), marked the beginning of a significant artistic journey. Abu Pashaev emerges as an artist whose profound expressions resonate with the complexities of human existence.
+            <!-- Image Slider -->
+            <div class="slider-container">
+                <div class="slides">
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper1.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper1.jpg') }}" alt="Blue">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper2.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper2.jpg') }}" alt="Yellow">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper3.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper3.jpg') }}" alt="Bridge">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper4.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper4.jpg') }}" alt="Back">
+                    </div>
+                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper5.jpg') }}')">
+                        <img src="{{ url_for('static', filename='newspapers/newspaper5.jpg') }}" alt="Sun">
+                    </div>
+                </div>
+            
+                <!-- Dots to count images -->
+                <div class="dots-container">
+                    {% for _ in range(1, 6) %}
+                        <div class="dot" onclick="currentSlide({{ loop.index }})"></div>
+                    {% endfor %}
+                </div>   
+            </div>
+        </div>
+    
+
+
+
+
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+    <div class="cream-container">
+        <div class="left-section">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+        </div>
+        <div class="right-section">
+            <div class="text">
+                "Discover the artistic world of Abu Pashaev."
+            </div>
+            <button class="explore-button">Explore</button>
+        </div>
+    </div>
+    <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+    
+    <div class="cream-container2">
+      <div class="left-section2">
+          <div class="text2">
+              "Discover the artistic world of Abu Pashaev."
+          </div>
+          <button class="gallery-button">GALLERY</button>
+      </div>
+      <div class="right-section2">
+          <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
+      </div>
+    </div>
+    
+    
+    
+    <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+
+
+
+
+
+
+    <div class="white-container">
+        <h1>Where Art Meets Emotion, and Every Stroke Tells a Story.</h1>
+        {{ text }} 
+
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+
+
+    <div class="row row-content">
+        
+        <div class="col-lg-6 order-lg-1">
+            <img src="{{ url_for('static', filename='Images/freeman.png') }}" alt="Freeman" class="img rounded" style="width: 100%;">
+        </div>  
+    </div>
+
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 0px 0;">
+
+    <div class="row row-content adjustable-margin" style="color: rgb(237, 236, 236);">
+        <div class="col-lg-6">
+            <h1>BOTTOM TEXT</h1>
+            {{ mod }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
+                </div>
+                <div class="col-lg-6">
+                    <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
+
+
+    
+    <div class="row row-content">
+        <div class="col-lg-6 mx-auto text-center">
+            <h1>Art Exhibitions</h1>
+        </div>
+    </div>
 </div>
 
 
 
 
+<div class="bg-dark text-white" style="width: 100%; padding: 40px;">
+    <table style="border-collapse: collapse; width: 80%; margin: 0 auto;">
+    
+    <tr>
+        <td>1992</td>
+        <td>Atomic Heart of My Mom</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>1993</td>
+        <td>Premonition of the Civil War</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>1996</td>
+        <td>Silent Protest Against Violence</td>
+        <td>Chechen-Aul, Russia</td>
+    </tr>
+    <tr>
+        <td>1997</td>
+        <td>Wounded Flowers</td>
+        <td>Chechen-Aul, Russia</td>
+    </tr>
+    <tr>
+        <td>1993</td>
+        <td>The Face of War</td>
+        <td>Nazran, Russia</td>
+    </tr>
+    <tr>
+        <td>2003</td>
+        <td>The Face of War</td>
+        <td>Prague, Czech Republic</td>
+    </tr>
+    <tr>
+        <td>2004</td>
+        <td>Optimistic Reflection of the Past</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>2007</td>
+        <td>Peace to the Caucasus</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>2008</td>
+        <td>Sochi - 2008</td>
+        <td>Sochi, Russia</td>
+    </tr>
+    <tr>
+        <td>2009</td>
+        <td>Chechen Artists at the State Duma</td>
+        <td>Moscow, Russia</td>
+    </tr>
+    <tr>
+        <td>2011</td>
+        <td>Artists from the Chechen Republic</td>
+        <td>Saratov City Duma, Russia</td>
+    </tr>
+    <tr>
+        <td>2011</td>
+        <td>Apotheosis of History (with V.V. Zauraev)</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    <tr>
+        <td>2011</td>
+        <td>Scream in Art</td>
+        <td>Maykop, Russia</td>
+    </tr>
+    <tr>
+        <td>2012</td>
+        <td>Zonal Exhibition</td>
+        <td>Rostov-on-Don, Russia</td>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>VIII International Art Symposium "Tales of Love"</td>
+        <td>Yelabuga, Russia</td>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>Hand in Art</td>
+        <td>Maykop, Russia</td>
+    </tr>
+    <tr>
+        <td>2013</td>
+        <td>XI Regional Exhibition "Southern Russia"</td>
+        <td>Grozny, Russia</td>
+    </tr>
+    </table>
+</div>
 
-<script>
-  const track = document.getElementById("image-track");
 
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
 
-const handleOnUp = () => {
-  track.dataset.mouseDownAt = "0";  
-  track.dataset.prevPercentage = track.dataset.percentage;
-}
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
 
-const handleOnMove = e => {
-  if(track.dataset.mouseDownAt === "0") return;
-  
-  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-        maxDelta = window.innerWidth / 2;
-  
-  const percentage = (mouseDelta / maxDelta) * -100,
-        nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-        nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-  
-  track.dataset.percentage = nextPercentage;
-  
-  track.animate({
-    transform: `translate(${nextPercentage}%, -50%)`
-  }, { duration: 1200, fill: "forwards" });
-  
-  for(const image of track.getElementsByClassName("image")) {
-    image.animate({
-      objectPosition: `${100 + nextPercentage}% center`
-    }, { duration: 1200, fill: "forwards" });
-  }
-}
 
-/* -- Had to add extra lines for touch events -- */
 
-window.onmousedown = e => handleOnDown(e);
 
-window.ontouchstart = e => handleOnDown(e.touches[0]);
+<!-- Enlarged Image Modal -->
+<div class="enlarged-modal" onclick="closeEnlarged()">
+    <span class="close-button" onclick="closeEnlarged()">&times;</span>
+    <img id="enlargedImg" alt="">
+</div>
 
-window.onmouseup = e => handleOnUp(e);
 
-window.ontouchend = e => handleOnUp(e.touches[0]);
-
-window.onmousemove = e => handleOnMove(e);
-
-window.ontouchmove = e => handleOnMove(e.touches[0]);
-</script>
+<script src="static/js/script.js"></script>
+{% endblock %}
