@@ -1,5 +1,4 @@
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #0a0a23 ;
    /*background: url("/static/Images/brown.jpg") center / cover;*/
 
@@ -55,97 +54,93 @@ body {
 
 /* CSS for the grid layout */
 .grid-container {
-    
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 10px;
-    padding: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+  padding: 10px;
 }
 
 .grid-item {
-    position: relative;
+  position: relative;
 }
 
 .image {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
 }
 
-/* CSS for the modal */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .frame {
-    border: 4px solid #0a0a23; /* Frame border */
-    padding: 5px; /* Padding to separate image from frame */
-    background-color: #0a0a23; /* Frame background color */
-    display: inline-block; /* Make frame wrap around the image */
-    transition: transform 0.3s ease-in-out; /* Add smooth transition */
+  border: 4px solid #0a0a23; /* Frame border */
+  padding: 5px; /* Padding to separate image from frame */
+  background-color: #0a0a23; /* Frame background color */
+  display: inline-block; /* Make frame wrap around the image */
+  transition: transform 0.3s ease-in-out; /* Add smooth transition */
 }
 
 .frame:hover {
-    transform: scale(1.05); /* Scale up the frame on hover */
+  transform: scale(1.05); /* Scale up the frame on hover */
 }
 
 .gallery-button-container {
-    width: 20%; /* Adjust the width as needed */
-    text-align: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
 }
 
-.gallery-button {
-    font-family: 'Comfortaa', sans-serif;
-    font-size: 16px;
-    padding: 10px 20px;
-    background-color: #0a0a23;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Styling for span elements */
+.gallery-span {
+  color: #bbb8b8;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 20px;
 }
 
-.gallery-button:hover {
-    background-color: #1a1a3a; /* Darker shade of the background color on hover */
+.image-name {
+  font-family: "Comfortaa";
+  src: url('fonts/Comfortaa.ttf') format('truetype');
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -176,7 +171,6 @@ html {
   src: url('fonts/Comfortaa.ttf') format('truetype');
   scroll-behavior: smooth;
 }
-
 
 
 ::-webkit-scrollbar {
@@ -269,12 +263,6 @@ html {
   color: var(--white);
 }
 
-.food-rating {
-  padding-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
 .rating ion-icon {
   color: var(--primary);
 }
@@ -337,6 +325,9 @@ html {
 }
 
 
+
+
+
 /*Cream Container 1 */
 .cream-container {
   background-color: #fff8e1; /* Cream color */
@@ -347,8 +338,8 @@ html {
   border-radius: 20px; /* Adding curved edges */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
   margin-top: 20px; /* Add space between hr and cream-container */
-  margin-left: 50px; /* Add left margin */
-  margin-right: 50px; /* Add right margin */
+  margin-left: 200px; /* Add left margin */
+  margin-right: 200px; /* Add right margin */
 }
 .cream-container img {
   border-radius: 20px; /* Adding curved edges */
@@ -369,7 +360,6 @@ html {
   align-items: center;
 }
 
-
 .text {
   font-family: 'Comfortaa', sans-serif;
   font-weight: bold;
@@ -380,6 +370,9 @@ html {
 }
 
 .explore-button {
+  font-family: "Comfortaa";
+  src: url('fonts/Comfortaa.ttf') format('truetype');
+  font-weight: bold;
   background-color: #0a0a23;
   color: rgb(255, 255, 255);
   padding: 10px 20px;
@@ -388,6 +381,10 @@ html {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-left: 200px;
+}
+
+.explore-button:hover {
+  background-color: #a3a3a3; /* Darker shade of the background color on hover */
 }
 
 
@@ -405,8 +402,8 @@ html {
   border-radius: 20px; /* Adding curved edges */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
   margin-top: 20px; /* Add space between hr and cream-container */
-  margin-left: 50px; /* Add left margin */
-  margin-right: 50px; /* Add right margin */
+  margin-left: 200px; /* Add left margin */
+  margin-right: 200px; /* Add right margin */
 }
 .cream-container2 img {
   border-radius: 20px; /* Adding curved edges */
@@ -427,8 +424,6 @@ html {
   align-items: center;
 }
 
-
-
 .text2 {   /* Styles for the bold text and explore button */
   font-family: 'Comfortaa', sans-serif;
   color:#ffffff;
@@ -439,6 +434,7 @@ html {
 }
 
 .gallery-button {
+  font-family: 'Comfortaa', sans-serif;
   background-color: white;
   color: black;
   padding: 10px 20px;
@@ -449,7 +445,33 @@ html {
   margin-left: 200px;
 }
 
+.gallery-button:hover {
+  background-color: #a2a2a2; /* Darker shade of the background color on hover */
+}
 
+.horizontal-line {
+  margin-left: 11%;
+  margin-right: 11%;
+  margin-top: 3%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.iconbutton{
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 3%;
+  bottom: 3%;
+  cursor: pointer;
+}
+.iconbutton:hover{
+  background-color: #ec994b;
+}
 
 /*{
     border: 1px solid red;

@@ -1,47 +1,90 @@
-let slideIndex = 0;
-    showSlides();
+let currentPosition = 1; // Initial position
+const totalItems = document.querySelectorAll('#carousel .item').length;
+const interval = 5000; // Change slide every 5 seconds
+const transitionDuration = 2; // Duration of transition between slides in seconds
 
-    function prevSlide() {
-        showSlides(slideIndex -= 1);
-        document.querySelector('.prev').classList.add('clicked');
-        setTimeout(() => document.querySelector('.prev').classList.remove('clicked'), 300); // Reset after 300ms
-    }
-    
-    function nextSlide() {
-        showSlides(slideIndex += 1);
-        document.querySelector('.next').classList.add('clicked');
-        setTimeout(() => document.querySelector('.next').classList.remove('clicked'), 300); // Reset after 300ms
-    }
-    
+function updateCarousel() {
+    const currentItem = document.querySelector(`#carousel .item:nth-of-type(${currentPosition})`);
+    currentItem.style.transition = `transform ${transitionDuration}s ease-in-out`;
+    currentItem.style.transform = `rotateY(calc(-10deg * 0)) translateX(calc(-300px * 0))`; // Reset the current slide
 
+    currentPosition = (currentPosition % totalItems) + 1; // Move to the next slide
+    const nextItem = document.querySelector(`#carousel .item:nth-of-type(${currentPosition})`);
+    nextItem.style.transition = `transform ${transitionDuration}s ease-in-out`;
+    nextItem.style.transform = `rotateY(calc(-10deg * 1)) translateX(calc(-300px * 1))`; // Apply transformation to the next slide
 
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
+    setTimeout(updateCarousel, transitionDuration * 1000); // Schedule the next update
+}
 
-    function showSlides() {
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelector('.dot-container');
-        slides.forEach(slide => slide.style.display = 'none');
-        dots.innerHTML = '';
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = 'none';
-            const dot = document.createElement('span');
-            dot.className = 'dot';
-            dot.addEventListener('click', () => currentSlide(i));
-            dots.appendChild(dot);
-        }
-        if (slideIndex >= slides.length) { slideIndex = 0; }
-        if (slideIndex < 0) { slideIndex = slides.length - 1; }
-        slides[slideIndex].style.display = 'block';
-        dots.childNodes[slideIndex].classList.add('active');
-        slideIndex++;
-        setTimeout(showSlides, 5000); // Change slide every 3 seconds (3000 milliseconds)
-    }
+updateCarousel(); // Start the slideshow
 
 
 
+  // Top Image Slider
+function preloadImages() {
+    const images = [
+        "static/Images/homeSlides/IMG26.jpg",
+        "static/Images/homeSlides/IMG27.jpg",
+        "static/Images/homeSlides/IMG28.jpg",
+        "static/Images/homeSlides/IMG29.jpg",
+        "static/Images/homeSlides/IMG30.jpg"
+    ];
 
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// Call preload function when the page loads
+
+
+const track = document.getElementById("image-track");
+
+const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+const handleOnUp = () => {
+track.dataset.mouseDownAt = "0";  
+track.dataset.prevPercentage = track.dataset.percentage;
+};
+
+const handleOnMove = e => {
+if (track.dataset.mouseDownAt === "0") return;
+
+const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+      maxDelta = window.innerWidth / 2;
+
+const percentage = (mouseDelta / maxDelta) * -100,
+      nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+track.dataset.percentage = nextPercentage;
+
+track.animate({
+  transform: `translate(${nextPercentage}%, -50%)`
+}, { duration: 1200, fill: "forwards" });
+
+for (const image of track.getElementsByClassName("images")) {
+  image.animate({
+    objectPosition: `${100 + nextPercentage}% center`
+  }, { duration: 1200, fill: "forwards" });
+}
+};
+
+
+/* --  extra lines for touch events -- */
+
+window.onmousedown = e => handleOnDown(e);
+
+window.ontouchstart = e => handleOnDown(e.touches[0]);
+
+window.onmouseup = e => handleOnUp(e);
+
+window.ontouchend = e => handleOnUp(e.touches[0]);
+
+window.onmousemove = e => handleOnMove(e);
+
+window.ontouchmove = e => handleOnMove(e.touches[0]);
 
 
 

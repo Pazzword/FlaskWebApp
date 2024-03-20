@@ -23,7 +23,7 @@ function closeEnlarged() {
 
 // Automatic slideshow
 setInterval(() => {
-    if (currentSlideIndex === 5) {
+    if (currentSlideIndex === 3) {
         currentSlideIndex = 1;
     } else {
         currentSlideIndex++;

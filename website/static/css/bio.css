@@ -5,6 +5,19 @@ body {
     background-repeat: no-repeat;
     color: #fff; /* Set text color to contrast with the background */
 }
+.text-font {
+    font-family: "Comfortaa";
+    src: url('fonts/Comfortaa.ttf') format('truetype');
+    font-weight: bold;
+}
+
+.top-bio {
+    font-size: 28px;
+    padding: 20px;
+    text-align: center;
+    font-family: "Comfortaa";
+    src: url('fonts/Comfortaa.ttf') format('truetype');
+}
 
 /* Additional styles for Bio.html */
 .white-container {
@@ -27,6 +40,7 @@ h1 {
     max-width: 50%; /* Set the maximum width of the slider */
     margin: auto;
     overflow: hidden;
+    position: relative;
 }
 
 .slides {
@@ -41,7 +55,7 @@ h1 {
 
 .slide img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 10px; /* Add rounded corners for a stylish look */
 }
 
@@ -75,8 +89,7 @@ h1 {
 }
 
 .enlarged-modal img {
-    width: 80%; /* Set your enlarged image width */
-    height: auto;
+    display: flex;
     border-radius: 10px; /* Add rounded corners for a stylish look */
 }
 
@@ -108,7 +121,6 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin: 20px 0;
-
 }
 
 th, td {
@@ -117,8 +129,6 @@ th, td {
     padding: 12px; /* Increase padding for better spacing */
     text-align: center;
 }
-
-
 
 tr:nth-child(even) {
     background-color: #4f262f; /* Alternate row background color */
@@ -130,9 +140,6 @@ tr:nth-child(even) {
     }
 }
 
-
-
-
 /*Cream Container 1 */
 .cream-container {
     background-color: #fff8e1; /* Cream color */
@@ -143,15 +150,15 @@ tr:nth-child(even) {
     border-radius: 20px; /* Adding curved edges */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
     margin-top: 20px; /* Add space between hr and cream-container */
-    margin-left: 50px; /* Add left margin */
-    margin-right: 50px; /* Add right margin */
+    margin-left: 10px; /* Add left margin */
+    margin-right: 10px; /* Add right margin */
   }
+  
   .cream-container img {
     border-radius: 20px; /* Adding curved edges */
     width: 50%; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
     margin-right: auto;
-  
   }
   
   .left-section { /* Styles for the left and right sections inside the container */
@@ -186,70 +193,7 @@ tr:nth-child(even) {
     margin-left: 200px;
   }
 
-  
-
-
-
-
-  
-  
-  /*Cream Container 2 */
-  .cream-container2 {
-    background-color: #0a0a23; /* Cream color */
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px; /* Adding curved edges */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding professional shadowing */
-    margin-top: 20px; /* Add space between hr and cream-container */
-    margin-left: 50px; /* Add left margin */
-    margin-right: 50px; /* Add right margin */
-  }
-  .cream-container2 img {
-    border-radius: 20px; /* Adding curved edges */
-    width: 50%; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-left: auto;
-  
-  }
-  
-  .right-section2 {
-    display: flex;
-    align-items: center;
-  }
-  
-  .left-section2 {
-    display: flex;
-    flex-direction: column; /* Display text and button in a column */
-    align-items: center;
-  }
-  
-  
-  
-  .text2 {   /* Styles for the bold text and explore button */
-    font-family: 'Comfortaa', sans-serif;
-    color:#ffffff;
-    font-weight: bold;
-    font-size: 36px;
-    margin-bottom: 10px; /* Add space between text and button */
-    margin-left: 200px;
-  }
-  
-  .gallery-button {
-    background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 200px;
-  }
-
-
   .container {
-    
     max-width: 124rem;
     padding: 0 1rem;
     margin: 0 auto;
@@ -265,6 +209,38 @@ tr:nth-child(even) {
   .custom-heading {
     font-size: 24px;
     color: #ec994b;
+  }
+
+  .textFont {
+    font-family: "Comfortaa";
+    src: url('fonts/Comfortaa.ttf') format('truetype');
+}
+
+.iconbutton{
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+    cursor: pointer;
+  }
+.iconbutton:hover{
+    background-color: #ec994b;
+  }
+
+  .row-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    margin-left: 14%;
+    margin-right: 14%;
+    margin-bottom: 3%;
+
   }
 
 /*{border: 1px solid red;} 
