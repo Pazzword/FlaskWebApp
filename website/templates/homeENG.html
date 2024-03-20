@@ -1,253 +1,480 @@
 {% extends "body.html" %}
-
-{% block title %}Bio{% endblock %}
-
+{% block title %}Gallery{% endblock %}
 {% block content %}
 <head>
-    <!-- Other head elements -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bio.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+    
 </head>
 <div class="container-fluid">
-    <h2 class="text-center custom-heading "> "Nostalgia is a passing phrase of infinity." </h2>
-  </div>
+  <h3 class="text-center larger-name"> Abu Pashaev </h3>
+  <h1 class="text-center custom-heading">"An Esoteric Perspective on Ancestral Symbols"</h1>
+</div>
 
 
-
-
-
-
-
-    <div class="row row-content">
-        <div class="col-lg-6">
-            <img src="{{ url_for('static', filename='Images/avatar-circle.png') }}" alt="Abu Pashaev" class="img-fluid rounded">
-        </div>
-        <div class="col-lg-6" style="margin-top: 80px;">
-            Abu Pashaev, born in 1966 in Chechen-Aul, is a distinguished artist whose life journey shapes his profound creations. From serving in the Soviet Army to graduating in graphic design, Pashaev's diverse experiences manifest in his artwork. Seeking guidance from renowned Chechen artists and integrating martial arts philosophy, he crafted his style, "Wind." His graphic series, like "You Don't Know How Painful It Is!," explores inner worlds with titles such as "Scream" and "Apocalypse."
-        </div>
-    </div>
-
-    <hr class="row row-content" class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-
-        <div class="col-lg-6" style=">
-            Pashaev's works express universal themes of pain, solitude, and the human condition, showcasing his ability to convey deep emotions through a meticulous artistic process. His inaugural exhibition, "Atomic Heart of My Mom" (1992), marked the beginning of a significant artistic journey. Abu Pashaev emerges as an artist whose profound expressions resonate with the complexities of human existence.
-            <!-- Image Slider -->
-            <div class="slider-container">
-                <div class="slides">
-                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper1.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper1.jpg') }}" alt="Blue">
-                    </div>
-                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper2.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper2.jpg') }}" alt="Yellow">
-                    </div>
-                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper3.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper3.jpg') }}" alt="Bridge">
-                    </div>
-                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper4.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper4.jpg') }}" alt="Back">
-                    </div>
-                    <div class="slide" onclick="enlargeImage('{{ url_for('static', filename='newspapers/newspaper5.jpg') }}')">
-                        <img src="{{ url_for('static', filename='newspapers/newspaper5.jpg') }}" alt="Sun">
-                    </div>
-                </div>
-            
-                <!-- Dots to count images -->
-                <div class="dots-container">
-                    {% for _ in range(1, 6) %}
-                        <div class="dot" onclick="currentSlide({{ loop.index }})"></div>
-                    {% endfor %}
-                </div>   
+<section id="tranding">
+    <div class="container">
+      <div class="swiper tranding-slider">
+        <div class="swiper-wrapper">
+          <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="static/Images/LatestIMG/IMG8.jpg" alt="Tranding">
             </div>
-        </div>
-    
-
-
-
-
-    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-    <div class="cream-container">
-        <div class="left-section">
-            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
-        </div>
-        <div class="right-section">
-            <div class="text">
-                "Discover the artistic world of Abu Pashaev."
+            <div class="tranding-slide-content">
+              <h1 class="food-price">$20</h1>
+              <div class="tranding-slide-content-bottom">
+                <h2 class="">
+                    "Reflected Past Through Time and Space"<br>
+                    1999
+                    
+                </h2>
+                <h3 class="food-rating">
+                  <span>4.5</span>
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </h3>
+              </div>
             </div>
-            <button class="explore-button">Explore</button>
-        </div>
-    </div>
-    <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-    
-    <div class="cream-container2">
-      <div class="left-section2">
-          <div class="text2">
-              "Discover the artistic world of Abu Pashaev."
           </div>
-          <button class="gallery-button">GALLERY</button>
-      </div>
-      <div class="right-section2">
-          <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
-      </div>
-    </div>
-    
-    
-    
-    <hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-
-
-
-
-
-
-
-    <div class="white-container">
-        <h1>Where Art Meets Emotion, and Every Stroke Tells a Story.</h1>
-        {{ text }} 
-
-    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
-
-
-
-    <div class="row row-content">
-        
-        <div class="col-lg-6 order-lg-1">
-            <img src="{{ url_for('static', filename='Images/freeman.png') }}" alt="Freeman" class="img rounded" style="width: 100%;">
-        </div>  
-    </div>
-
-    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 0px 0;">
-
-    <div class="row row-content adjustable-margin" style="color: rgb(237, 236, 236);">
-        <div class="col-lg-6">
-            <h1>BOTTOM TEXT</h1>
-            {{ mod }}
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
-                </div>
-                <div class="col-lg-6">
-                    <img src="static/Images/sign.png" alt="Sign" style="width: 100%;">
-                </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="static/Images/LatestIMG/IMG19.jpg" alt="Tranding">
             </div>
+            <div class="tranding-slide-content">
+              <h1 class="food-price">$20</h1>
+              <div class="tranding-slide-content-bottom">
+                <h2 class="">
+                    "Contemplation Through Time and Space"<br>
+                    1994
+                </h2>
+                <h3 class="food-rating">
+                  <span>4.5</span>
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="static/Images/LatestIMG/IMG18.jpg" alt="Tranding">
+            </div>
+            <div class="tranding-slide-content">
+              <h1 class="food-price">$40</h1>
+              <div class="tranding-slide-content-bottom">
+                <h2 class="">
+                    "Date by the Erzi Towers"<br>
+                    1996
+                </h2>
+                <h3 class="food-rating">
+                  <span>4.5</span>
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="static/Images/LatestIMG/IMG17.jpg" alt="Tranding">
+            </div>
+            <div class="tranding-slide-content">
+              <h1 class="food-price">$15</h1>
+              <div class="tranding-slide-content-bottom">
+                <h2 class="">
+                    "The Past Reflected in the Present"<br>
+                    1994
+                </h2>
+                <h3 class="food-rating">
+                  <span>4.5</span>
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="static/Images/LatestIMG/IMG16.jpg" alt="Tranding">
+            </div>
+            <div class="tranding-slide-content">
+              <h1 class="food-price">$15</h1>
+              <div class="tranding-slide-content-bottom">
+                <h2 class="">
+                "Interrupted Flight"<br>
+                1994
+                </h2>
+                <h3 class="food-rating">
+                  <span>4.5</span>
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="static/Images/LatestIMG/IMG15.jpg" alt="Tranding">
+            </div>
+            <div class="tranding-slide-content">
+              <h1 class="food-price">$20</h1>
+              <div class="tranding-slide-content-bottom">
+                <h2 class="">
+                  "Spring"<br>
+                  2018
+                </h2>
+                <h3 class="food-rating">
+                  <span>4.5</span>
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="static/Images/LatestIMG/IMG14.jpg" alt="Tranding">
+            </div>
+            <div class="tranding-slide-content">
+              <h1 class="food-price">$8</h1>
+              <div class="tranding-slide-content-bottom">
+                <h2 class="">
+                  "The Tree"<br>
+                  2000
+                </h2>
+                <h3 class="food-rating">
+                  <span>4.5</span>
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- Slide-end -->
+        </div>
+
+        <div class="tranding-slider-control">
+          <div class="swiper-button-prev slider-arrow">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </div>
+          <div class="swiper-button-next slider-arrow">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+</div>
+
+
+
+
+<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+<div class="cream-container">
+    <div class="left-section">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image">
+    </div>
+    <div class="right-section">
+        <div class="text">
+            "Discover the artistic world of Abu Pashaev."
+        </div>
+        <button class="explore-button">Explore</button>
+    </div>
+</div>
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<div class="cream-container2">
+  <div class="left-section2">
+      <div class="text2">
+          "Discover the artistic world of Abu Pashaev."
+      </div>
+      <button class="gallery-button">GALLERY</button>
+  </div>
+  <div class="right-section2">
+      <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 10" class="image2">
+  </div>
+</div>
+
+
+
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="slide">
+            <img src="static/Images/sign.png" alt="Image 3">
+        </div>
+        <!-- Add more slides as needed -->
+    </div>
+</div>
+
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
+
+
+
+
+<div class="grid-container">
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG1.jpg') }}" alt="Image 1" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG1.jpg') }}', 'Image 1')">
         </div>
     </div>
-    <hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
-
-
     
-    <div class="row row-content">
-        <div class="col-lg-6 mx-auto text-center">
-            <h1>Art Exhibitions</h1>
+    <!-- Repeat the above div for each image, changing the image source and alt text -->
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG2.jpg') }}" alt="Image 2" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG2.jpg') }}', 'Image 2')">
         </div>
     </div>
+
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG3.jpg') }}" alt="Image 3" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG3.jpg') }}', 'Image 3')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG4.jpg') }}" alt="Image 4" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG4.jpg') }}', 'Image 4')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG5.jpg') }}" alt="Image 5" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG5.jpg') }}', 'Image 5')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG6.jpg') }}" alt="Image 6" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG6.jpg') }}', 'Image 6')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG7.jpg') }}" alt="Image 7" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG7.jpg') }}', 'Image 7')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG8.jpg') }}" alt="Image 8" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG8.jpg') }}', 'Image 8')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG9.jpg') }}" alt="Image 9" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG9.jpg') }}', 'Image 9')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}', 'Image 10')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 11" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}', 'Image 11')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG12.jpg') }}" alt="Image 12" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG12.jpg') }}', 'Image 12')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG13.jpg') }}" alt="Image 13" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG13.jpg') }}', 'Image 13')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG14.jpg') }}" alt="Image 14" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG14.jpg') }}', 'Image 14')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG15.jpg') }}" alt="Image 15" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG15.jpg') }}', 'Image 15')">
+        </div>
+    </div>
+
+
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG16.jpg') }}" alt="Image 16" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG16.jpg') }}', 'Image 16')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG17.jpg') }}" alt="Image 17" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG17.jpg') }}', 'Image 17')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG18.jpg') }}" alt="Image 18" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG18.jpg') }}', 'Image 18')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG19.jpg') }}" alt="Image 19" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG19.jpg') }}', 'Image 19')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG20.jpg') }}" alt="Image 20" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG20.jpg') }}', 'Image 20')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG21.jpg') }}" alt="Image 21" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG21.jpg') }}', 'Image 21')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG22.jpg') }}" alt="Image 22" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG22.jpg') }}', 'Image 22')">
+        </div>7
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG23.jpg') }}" alt="Image 23" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG23.jpg') }}', 'Image 23')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG24.jpg') }}" alt="Image 24" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG24.jpg') }}', 'Image 24')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG25.jpg') }}" alt="Image 25" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG25.jpg') }}', 'Image 25')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG26.jpg') }}" alt="Image 26" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG26.jpg') }}', 'Image 26')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG27.jpg') }}" alt="Image 27" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG27.jpg') }}', 'Image 27')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG28.jpg') }}" alt="Image 28" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG28.jpg') }}', 'Image 28')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG29.jpg') }}" alt="Image 29" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG29.jpg') }}', 'Image 29')">
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG30.jpg') }}" alt="Image 30" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG30.jpg') }}', 'Image 30')">
+        </div>
+    </div>
+
+
 </div>
 
 
-
-
-<div class="bg-dark text-white" style="width: 100%; padding: 40px;">
-    <table style="border-collapse: collapse; width: 80%; margin: 0 auto;">
-    
-    <tr>
-        <td>1992</td>
-        <td>Atomic Heart of My Mom</td>
-        <td>Grozny, Russia</td>
-    </tr>
-    <tr>
-        <td>1993</td>
-        <td>Premonition of the Civil War</td>
-        <td>Grozny, Russia</td>
-    </tr>
-    <tr>
-        <td>1996</td>
-        <td>Silent Protest Against Violence</td>
-        <td>Chechen-Aul, Russia</td>
-    </tr>
-    <tr>
-        <td>1997</td>
-        <td>Wounded Flowers</td>
-        <td>Chechen-Aul, Russia</td>
-    </tr>
-    <tr>
-        <td>1993</td>
-        <td>The Face of War</td>
-        <td>Nazran, Russia</td>
-    </tr>
-    <tr>
-        <td>2003</td>
-        <td>The Face of War</td>
-        <td>Prague, Czech Republic</td>
-    </tr>
-    <tr>
-        <td>2004</td>
-        <td>Optimistic Reflection of the Past</td>
-        <td>Grozny, Russia</td>
-    </tr>
-    <tr>
-        <td>2007</td>
-        <td>Peace to the Caucasus</td>
-        <td>Grozny, Russia</td>
-    </tr>
-    <tr>
-        <td>2008</td>
-        <td>Sochi - 2008</td>
-        <td>Sochi, Russia</td>
-    </tr>
-    <tr>
-        <td>2009</td>
-        <td>Chechen Artists at the State Duma</td>
-        <td>Moscow, Russia</td>
-    </tr>
-    <tr>
-        <td>2011</td>
-        <td>Artists from the Chechen Republic</td>
-        <td>Saratov City Duma, Russia</td>
-    </tr>
-    <tr>
-        <td>2011</td>
-        <td>Apotheosis of History (with V.V. Zauraev)</td>
-        <td>Grozny, Russia</td>
-    </tr>
-    <tr>
-        <td>2011</td>
-        <td>Scream in Art</td>
-        <td>Maykop, Russia</td>
-    </tr>
-    <tr>
-        <td>2012</td>
-        <td>Zonal Exhibition</td>
-        <td>Rostov-on-Don, Russia</td>
-    </tr>
-    <tr>
-        <td>2013</td>
-        <td>VIII International Art Symposium "Tales of Love"</td>
-        <td>Yelabuga, Russia</td>
-    </tr>
-    <tr>
-        <td>2013</td>
-        <td>Hand in Art</td>
-        <td>Maykop, Russia</td>
-    </tr>
-    <tr>
-        <td>2013</td>
-        <td>XI Regional Exhibition "Southern Russia"</td>
-        <td>Grozny, Russia</td>
-    </tr>
-    </table>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
 </div>
 
+<script>
+function openModal(url, alt) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("modalImg");
+    var captionText = document.getElementById("caption");
+    modal.style.display = "block";
+    modalImg.src = url;
+    modalImg.alt = alt;
+    // captionText.innerHTML = alt; // Optionally display image caption
+}
 
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
 
-<hr class="team_hr" style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 100px 0;">
-
-
-
-
-<!-- Enlarged Image Modal -->
-<div class="enlarged-modal" onclick="closeEnlarged()">
-    <span class="close-button" onclick="closeEnlarged()">&times;</span>
-    <img id="enlargedImg" alt="">
-</div>
-
-
-<script src="static/js/script.js"></script>
+//SLIDER//
+var TrandingSlider = new Swiper('.tranding-slider', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 100,
+      modifier: 2.5,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
+  });
+</script>
 {% endblock %}

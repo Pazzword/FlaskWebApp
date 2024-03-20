@@ -1,126 +1,290 @@
 {% extends "body.html" %}
-
-{% block title %}
-  Contacts
-{% endblock %}
-
+{% block title %}Gallery{% endblock %}
 {% block content %}
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/contacts.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+    
 </head>
+
 <style>
-  .body2 {
-    height: 100vh;
-    width: 88vw;
-    background-color: #0a0a23; /* Fixed typo in background color */
-    margin: 0;
-    overflow: hidden;
+  body {
+    background-color: #0a0a23 ;
+   /*background: url("/static/Images/brown.jpg") center / cover;*/
+
 }
 
-
-#image-track {
-    display: flex;
-    gap: 4vmin;
-    position: absolute;
-    left: 50%;
-    top: 50%; /* Adjust this value to move the images down */
-    transform: translate(-50%, -50%);
-    max-width: calc(100% - 8vmin); /* Ensure the track does not exceed the page width */
-    overflow-x: auto; /* Add horizontal scrolling for overflow */
-    scrollbar-width: none; /* Hide the scrollbar */
-    -ms-overflow-style: none; /* Hide the scrollbar for IE/Edge */
-    user-select: none; /* -- Prevent image highlighting -- */
+/* CSS for the grid layout */
+.grid-container {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
 }
 
-/* Hide scrollbar for Firefox */
-#image-track::-webkit-scrollbar {
+.grid-item {
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+/* CSS for the modal */
+.modal {
     display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
-#image-track > .image {
-  width: 20vmin;
-  height: 50vmin;
-  object-fit: cover;
-  object-position: 100% center;
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.frame {
+    border: 4px solid #0a0a23; /* Frame border */
+    padding: 5px; /* Padding to separate image from frame */
+    background-color: #0a0a23; /* Frame background color */
+    display: inline-block; /* Make frame wrap around the image */
+    transition: transform 0.3s ease-in-out; /* Add smooth transition */
+}
+
+.frame:hover {
+    transform: scale(1.05); /* Scale up the frame on hover */
+}
+
+.gallery-button-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Styling for span elements */
+.gallery-span {
+    color: #bbb8b8;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.image-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
 }
 
 </style>
 
+<div class="container-fluid">
+  <h3 class="text-center larger-name"> Abu Pashaev </h3>
+  <h1 class="text-center custom-heading">"An Esoteric Perspective on Ancestral Symbols"</h1>
+</div>
 
+<hr class="team_hr" style="border-bottom: 1px solid rgba(255, 255, 255, 0.5); margin: 50px 0;">
 
-<div class="body2">
-  <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-    <img class="image" src="static/Images/LatestIMG/IMG26.jpg" draggable="false" />
-    <img class="image" src="static/Images/LatestIMG/IMG27.jpg" draggable="false" />
-    <img class="image" src="static/Images/LatestIMG/IMG28.jpg" draggable="false" />
-    <img class="image" src="static/Images/LatestIMG/IMG29.jpg" draggable="false" />
-    <img class="image" src="static/Images/LatestIMG/IMG30.jpg" draggable="false" />
+<div class="grid-container">
+    <div class="grid-item">
+        <div class="frame">
+            <img src="{{ url_for('static', filename='Images/LatestIMG/IMG1.jpg') }}" alt="Image 1" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG1.jpg') }}', 'Image 1')">
+            <div class="image-name">Contemplation through Time and Space</div>
+          </div>
+    </div>
+    <div class="grid-item">
+      <div class="frame">
+          <img src="{{ url_for('static', filename='Images/LatestIMG/IMG2.jpg') }}" alt="Image 2" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG2.jpg') }}', 'Image 2')">
+          <div class="image-name">"Goryanka"</div>
+        </div>
+    </div>
+  <div class="grid-item">
+    <div class="frame">
+        <img src="{{ url_for('static', filename='Images/LatestIMG/IMG3.jpg') }}" alt="Image 3" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG3.jpg') }}', 'Image 3')">
+        <div class="image-name">Image 1</div>
+      </div>
+</div>
+<div class="grid-item">
+  <div class="frame">
+      <img src="{{ url_for('static', filename='Images/LatestIMG/IMG4.jpg') }}" alt="Image 4" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG4.jpg') }}', 'Image 4')">
+      <div class="image-name">Blue</div>
+    </div>
+</div>
+<div class="grid-item">
+  <div class="frame">
+      <img src="{{ url_for('static', filename='Images/LatestIMG/IMG5.jpg') }}" alt="Image 5" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG5.jpg') }}', 'Image 5')">
+      <div class="image-name">Contemplation through Time and Space</div>
+    </div>
+</div>
+<div class="grid-item">
+<div class="frame">
+    <img src="{{ url_for('static', filename='Images/LatestIMG/IMG6.jpg') }}" alt="Image 6" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG6.jpg') }}', 'Image 6')">
+    <div class="image-name">"Goryanka"</div>
   </div>
+</div>
+<div class="grid-item">
+<div class="frame">
+  <img src="{{ url_for('static', filename='Images/LatestIMG/IMG7.jpg') }}" alt="Image 7" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG7.jpg') }}', 'Image 7')">
+  <div class="image-name">Image 1</div>
+</div>
+</div>
+<div class="grid-item">
+<div class="frame">
+<img src="{{ url_for('static', filename='Images/LatestIMG/IMG8.jpg') }}" alt="Image 8" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG8.jpg') }}', 'Image 8')">
+<div class="image-name">Blue</div>
+</div>
+</div>
+<div class="grid-item">
+  <div class="frame">
+      <img src="{{ url_for('static', filename='Images/LatestIMG/IMG9.jpg') }}" alt="Image 9" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG9.jpg') }}', 'Image 9')">
+      <div class="image-name">Contemplation through Time and Space</div>
+    </div>
+</div>
+<div class="grid-item">
+<div class="frame">
+    <img src="{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}" alt="Image 10" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG10.jpg') }}', 'Image 10')">
+    <div class="image-name">"Goryanka"</div>
+  </div>
+</div>
+<div class="grid-item">
+<div class="frame">
+  <img src="{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}" alt="Image 11" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG11.jpg') }}', 'Image 11')">
+  <div class="image-name">Image 1</div>
+</div>
+</div>
+<div class="grid-item">
+<div class="frame">
+<img src="{{ url_for('static', filename='Images/LatestIMG/IMG12.jpg') }}" alt="Image 12" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG12.jpg') }}', 'Image 12')">
+<div class="image-name">Blue</div>
+</div>
+</div>
+<div class="grid-item">
+  <div class="frame">
+      <img src="{{ url_for('static', filename='Images/LatestIMG/IMG13.jpg') }}" alt="Image 13" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG13.jpg') }}', 'Image 13')">
+      <div class="image-name">Contemplation through Time and Space</div>
+    </div>
+</div>
+<div class="grid-item">
+<div class="frame">
+    <img src="{{ url_for('static', filename='Images/LatestIMG/IMG14.jpg') }}" alt="Image 14" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG14.jpg') }}', 'Image 14')">
+    <div class="image-name">"Goryanka"</div>
+  </div>
+</div>
+<div class="grid-item">
+<div class="frame">
+  <img src="{{ url_for('static', filename='Images/LatestIMG/IMG15.jpg') }}" alt="Image 15" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG15.jpg') }}', 'Image 15')">
+  <div class="image-name">Image 1</div>
+</div>
+</div>
+<div class="grid-item">
+<div class="frame">
+<img src="{{ url_for('static', filename='Images/LatestIMG/IMG16.jpg') }}" alt="Image 16" class="image" onclick="openModal('{{ url_for('static', filename='Images/LatestIMG/IMG16.jpg') }}', 'Image 16')">
+<div class="image-name">Blue</div>
+</div>
+</div>
+
+  
+    
+
+
+
+
+
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div class="gallery-button-container">
+        <span class="gallery-span" onclick="prevImage()">&#8592;</span> <!-- Left arrow -->
+        <span class="gallery-span" onclick="rotateLeft()">&#8635;</span> <!-- Clockwise arrow -->
+        <span class="gallery-span" onclick="rotateRight()">&#8634;</span> <!-- Anticlockwise arrow -->
+        <span class="gallery-span" onclick="nextImage()">&#8594;</span> <!-- Right arrow -->
+    </div>
 </div>
 
 <script>
-  // Top Image Slider
-  function preloadImages() {
-        const images = [
-            "static/Images/LatestIMG/IMG8.jpg",
-            "static/Images/LatestIMG/IMG9.jpg",
-            "static/Images/LatestIMG/IMG10.jpg",
-            "static/Images/LatestIMG/IMG11.jpg"
-        ];
+var currentImageIndex = 0;
+var images = document.querySelectorAll(".grid-item .image");
+var totalImages = images.length;
 
-        images.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+function openModal(url, alt) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("modalImg");
+    modal.style.display = "block";
+    modalImg.src = url;
+    modalImg.alt = alt;
+    currentImageIndex = Array.from(images).findIndex(function(image) {
+        return image.src === url;
+    });
+}
+
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+    openModal(images[currentImageIndex].src, images[currentImageIndex].alt);
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % totalImages;
+    openModal(images[currentImageIndex].src, images[currentImageIndex].alt);
+}
+
+function rotateLeft() {
+    var modalImg = document.getElementById("modalImg");
+    var currentRotation = parseInt(modalImg.style.transform.replace("rotate(", "").replace("deg)", ""));
+    currentRotation = isNaN(currentRotation) ? 0 : currentRotation;
+    modalImg.style.transform = "rotate(" + (currentRotation - 90) + "deg)";
+}
+
+function rotateRight() {
+    var modalImg = document.getElementById("modalImg");
+    var currentRotation = parseInt(modalImg.style.transform.replace("rotate(", "").replace("deg)", ""));
+    currentRotation = isNaN(currentRotation) ? 0 : currentRotation;
+    modalImg.style.transform = "rotate(" + (currentRotation + 90) + "deg)";
+}
+
+// Close the modal when clicking outside the modal content
+window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        closeModal();
     }
-
-    // Call preload function when the page loads
-    window.onload = preloadImages();
-
-  const track = document.getElementById("image-track");
-
-  const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
-
-  const handleOnUp = () => {
-    track.dataset.mouseDownAt = "0";  
-    track.dataset.prevPercentage = track.dataset.percentage;
-  };
-
-  const handleOnMove = e => {
-    if (track.dataset.mouseDownAt === "0") return;
-    
-    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-          maxDelta = window.innerWidth / 2;
-    
-    const percentage = (mouseDelta / maxDelta) * -100,
-          nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-    
-    track.dataset.percentage = nextPercentage;
-    
-    track.animate({
-      transform: `translate(${nextPercentage}%, -50%)`
-    }, { duration: 1200, fill: "forwards" });
-    
-    for (const image of track.getElementsByClassName("image")) {
-      image.animate({
-        objectPosition: `${100 + nextPercentage}% center`
-      }, { duration: 1200, fill: "forwards" });
-    }
-  };
-
-  /* --  extra lines for touch events -- */
-
-  window.onmousedown = e => handleOnDown(e);
-
-  window.ontouchstart = e => handleOnDown(e.touches[0]);
-
-  window.onmouseup = e => handleOnUp(e);
-
-  window.ontouchend = e => handleOnUp(e.touches[0]);
-
-  window.onmousemove = e => handleOnMove(e);
-
-  window.ontouchmove = e => handleOnMove(e.touches[0]);
+};
 </script>
 {% endblock %}
